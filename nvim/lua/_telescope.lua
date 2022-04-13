@@ -4,14 +4,13 @@ local trouble = require("trouble.providers.telescope")
 
 telescope.setup {
   defaults = {
-    shorten_path = true,
-    preview= false,
+    shorten_path = { true },
+    preview = { true },
     file_ignore_patterns = { 'node_modules', 'vendor' },
   },
 pickers = {
     find_files = {
       prompt_title = 'All Files',
-      find_command = {'rg', '--files', '--no-ignore', '--hidden'},
       theme = 'dropdown',
     },
     git_files = {
