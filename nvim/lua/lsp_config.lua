@@ -36,6 +36,18 @@ end
 -- https://github.com/windwp/nvim-autopairs
 require('nvim-autopairs').setup()
 
+-- c/c++
+nvim_lsp.clangd.setup{
+  on_attach = on_attach,
+  cmd = {
+      "clangd",
+      "--background-index",
+      "--suggest-missing-includes",
+  },
+  filetypes = {"c", "cpp", "objc", "objcpp"},
+}
+
+-- golang
 nvim_lsp.gopls.setup{
 	cmd = {'gopls'},
 	-- for postfix snippets and analyzers

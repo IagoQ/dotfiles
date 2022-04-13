@@ -25,7 +25,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=fish
+"  set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
 
 " incremental substitution (neovim)
@@ -84,27 +84,51 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 if has("nvim")
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'neovim/nvim-lspconfig'
   
+  " fuzzy finder
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-
+  Plug 'folke/trouble.nvim'
+  
+  " file explorer
   Plug 'preservim/nerdtree'
+  
+  " status line
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'f-person/git-blame.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  
+  " Smooth Scroll
+  Plug 'karb94/neoscroll.nvim'
+  
+  " syntax stuff
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'windwp/nvim-autopairs'
 
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-omni'
   Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'L3MON4D3/LuaSnip'
 
-  " Plug 'crispgm/nvim-go'
   
-  Plug 'windwp/nvim-autopairs'
+  " themes 
+  " Dracula Theme
+  Plug 'Mofiqul/dracula.nvim'
 
+  " Carbon theme
+  Plug 'michaeldyrynda/carbon'
+
+  " One Dark Pro Theme
   Plug 'olimorris/onedarkpro.nvim'
+
+  " Inspired Github Theme
+  Plug 'mvpopuk/inspired-github.vim'
+
+  " Iceberg Theme
+  Plug 'cocopon/iceberg.vim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -126,6 +150,14 @@ endif
 runtime ./maps.vim
 "}}}
 
+" UI "{{{
+" ---------------------------------------------------------------------
+
+lua require("_lualine")
+lua require("_neoscroll")
+
+"}}}
+
 " language things "{{{
 " ---------------------------------------------------------------------
 " golang
@@ -133,7 +165,7 @@ lua require("treesitter")
 
 lua require("lsp_config")
 
-lua require("telescope")
+lua require("_telescope")
 
 lua require("completition")
 
@@ -153,14 +185,10 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 
 
-" Extras "{{{
-" ---------------------------------------------------------------------
-set exrc
-"}}}
 
 " theme "{{{
 " ---------------------------------------------------------------------
-colorscheme onedarkpro
+source ~/.config/nvim/theme.vim
 "}}}
 
 " vim: set foldmethod=marker foldlevel=0:
