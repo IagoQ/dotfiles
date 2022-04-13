@@ -98,9 +98,6 @@ if has("nvim")
   Plug 'f-person/git-blame.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   
-  " Smooth Scroll
-  Plug 'karb94/neoscroll.nvim'
-  
   " syntax stuff
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'neovim/nvim-lspconfig'
@@ -154,7 +151,6 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 
 lua require("_lualine")
-lua require("_neoscroll")
 
 "}}}
 
