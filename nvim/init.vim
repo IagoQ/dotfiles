@@ -94,7 +94,8 @@ if has("nvim")
   Plug 'folke/trouble.nvim'
   
   " file explorer
-  Plug 'preservim/nerdtree'
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
   
   " status line
   Plug 'nvim-lualine/lualine.nvim'
@@ -154,6 +155,7 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 
 lua require("_lualine")
+lua require("tree")
 
 "}}}
 
@@ -174,13 +176,6 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 autocmd BufWritePre *.go lua goimports(1000)
 
 "}}}
-
-
-" NERDTree "{{{
-" ---------------------------------------------------------------------
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-"  }}}}
 
 
 

@@ -11,11 +11,7 @@ telescope.setup {
 pickers = {
     find_files = {
       prompt_title = 'All Files',
-      theme = 'dropdown',
-    },
-    git_files = {
-      prompt_title = 'Git Files',
-      theme = 'dropdown',
+--      theme = 'dropdown',
     },
     current_buffer_fuzzy_find = {
       prompt_title = 'Current buffer',
@@ -24,11 +20,9 @@ pickers = {
     oldfiles = {
         sort_lastused = true,
         prompt_title = "Recently Opened",
-        theme = 'dropdown',
     },
     buffers = {
       sort_lastused = true,
-      theme = 'dropdown',
       mappings = {
         i = {
           ["<c-d>"] = "delete_buffer",

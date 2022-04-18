@@ -8,7 +8,7 @@ vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " NERDTree & terminal
-nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap <C-f> :NvimTreeToggle <CR>
 nnoremap <C-t> :vsplit <CR> :terminal <CR>:vertical resize 60<CR><S-a>
 
 " escape terminal
@@ -33,7 +33,8 @@ nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Mappings: telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fl <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fo <cmd>lua require('telescope.builtin').oldfiles()<cr>

@@ -4,6 +4,12 @@ local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+  window = {
+    border = 'rounded',
+  },
+  documentation = { 
+    border = 'rounded',
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -41,6 +47,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
-	{ name = 'nvim_lsp_signature_help' },
+	  { name = 'nvim_lsp_signature_help' },
   },
 }
