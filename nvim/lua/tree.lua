@@ -12,7 +12,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   sort_by = "name",
   update_cwd = false,
   view = {
-    width = 60,
+    width = 40,
     height = 30,
     side = "left",
     preserve_window_proportions = false,
@@ -55,7 +55,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   diagnostics = {
     enable = true,
-    show_on_dirs = false,
+    show_on_dirs = true,
     icons = {
       hint = "",
       info = "",
