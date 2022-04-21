@@ -9,7 +9,7 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " NERDTree & terminal
 nnoremap <C-f> :NvimTreeToggle <CR>
-nnoremap <C-t> :vsplit <CR> :terminal <CR>:vertical resize 60<CR><S-a>
+nnoremap <C-t> :belowright split <CR> :terminal <CR>:resize 20<CR><S-a>
 
 " escape terminal
 tnoremap <Esc> <c-\><c-n>

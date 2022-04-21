@@ -38,13 +38,14 @@ require('nvim-autopairs').setup()
 
 -- c/c++
 nvim_lsp.clangd.setup{
+	capabilities = capabilities,
   on_attach = on_attach,
-  cmd = {
-      "clangd",
-      "--background-index",
-      "--suggest-missing-includes",
-  },
-  filetypes = {"c", "cpp", "objc", "objcpp"},
+}
+
+-- haskell
+nvim_lsp.hls.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- golang
@@ -52,17 +53,17 @@ nvim_lsp.gopls.setup{
 	cmd = {'gopls'},
 	-- for postfix snippets and analyzers
 	capabilities = capabilities,
-	    settings = {
-	      gopls = {
-		      experimentalPostfixCompletions = true,
-		      analyses = {
-		        unusedparams = true,
-		        shadow = true,
-		     },
-		     staticcheck = true,
-		    },
-	    },
-	on_attach = on_attach,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+     },
+     staticcheck = true,
+    },
+  },
+  on_attach = on_attach,
 }
 
 function goimports(timeoutms)

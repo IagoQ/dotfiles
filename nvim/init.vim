@@ -87,7 +87,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 if has("nvim")
-  
   " fuzzy finder
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
