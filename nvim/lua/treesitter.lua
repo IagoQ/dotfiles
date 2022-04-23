@@ -25,6 +25,7 @@ nvim_treesitter_configs.setup {
 	  "yaml",
 	  "vim",
 	  "c",
+    "haskell",
   }
 
 }

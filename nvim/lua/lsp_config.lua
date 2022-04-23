@@ -43,8 +43,12 @@ nvim_lsp.clangd.setup{
 }
 
 -- haskell
-nvim_lsp.hls.setup{
-  capabilities = capabilities,
+nvim_lsp.hls.setup {
+  settings = {
+    haskell = {
+      formattingProvider = 'stylish-haskell',
+    },
+  },
   on_attach = on_attach,
 }
 
