@@ -9,7 +9,7 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " NERDTree & terminal
 nnoremap <C-f> :NvimTreeToggle <CR>
-nnoremap <C-t> :belowright split <CR> :terminal <CR>:resize 20<CR><S-a>
+nnoremap <C-t> :belowright split <CR> :terminal <CR>:resize 15<CR><S-a>
 
 " escape terminal
 tnoremap <Esc> <c-\><c-n>
@@ -20,16 +20,15 @@ tnoremap <C-w><C-j> <c-\><c-n><c-w><c-j>
 tnoremap <C-w><C-k> <c-\><c-n><c-w><c-k>
 tnoremap <C-w><C-l> <c-\><c-n><c-w><c-l>
 
+" bufferline 
+nnoremap <silent> gb :BufferLinePick<CR>
+
 " lsp 
 nnoremap K <Cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <space>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <space>e <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <space>a <cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>
-"  nnoremap ga <Cmd>lua vim.lsp.buf.code_action()<CR>
-
-nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Mappings: telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>

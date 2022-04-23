@@ -12,10 +12,10 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   sort_by = "name",
   update_cwd = false,
   view = {
-    width = 40,
+    width = 35,
     height = 30,
     side = "left",
-    preserve_window_proportions = false,
+    preserve_window_proportions = true,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
@@ -28,7 +28,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   renderer = {
     indent_markers = {
-      enable = false,
+      enable = true,
       icons = {
         corner = "└ ",
         edge = "│ ",
@@ -80,7 +80,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       global = false,
     },
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
       resize_window = false,
       window_picker = {
         enable = true,

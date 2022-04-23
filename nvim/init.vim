@@ -100,6 +100,9 @@ if has("nvim")
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'f-person/git-blame.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
+
+  " bufferline
+  Plug 'akinsho/bufferline.nvim'
   
   " syntax stuff
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -133,7 +136,6 @@ if has("nvim")
   Plug 'cocopon/iceberg.vim'
 endif
 
-Plug 'groenewege/vim-less', { 'for': 'less' }
 
 
 call plug#end()
@@ -156,6 +158,7 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 
 lua require("_lualine")
+lua require("_bufferline")
 lua require("tree")
 
 "}}}
