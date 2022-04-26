@@ -7,9 +7,9 @@ local cmp = require 'cmp'
 cmp.setup {
   window = {
     border = 'rounded',
-  },
-  documentation = { 
-    border = 'rounded',
+    documentation = {
+      border = 'rounded',
+    }
   },
   snippet = {
     expand = function(args)
@@ -45,8 +45,8 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
     { name = 'buffer' },
 	  { name = 'nvim_lsp_signature_help' },
   },

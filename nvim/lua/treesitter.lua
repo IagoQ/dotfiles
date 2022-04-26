@@ -26,6 +26,8 @@ nvim_treesitter_configs.setup {
 	  "vim",
 	  "c",
     "haskell",
+    "lua",
+    "json",
   }
 
 }
