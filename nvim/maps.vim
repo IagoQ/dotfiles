@@ -1,4 +1,3 @@
-
 " remove highlights after /
 nnoremap <esc> :noh<return><esc>
 
@@ -41,6 +40,17 @@ nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>e <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <leader>a <cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>
+
+" test
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+
+" comment
+nnoremap <silent> <leader>cl <Plug>(comment_toggle_current_linewise)
+nnoremap <silent> <leader>c <Plug>(comment_toggle_linewise)
+vnoremap <silent> <leader>c <Plug>(comment_toggle_linewise_visual)
 
 " Mapings: telescope
 nnoremap s <Nop>

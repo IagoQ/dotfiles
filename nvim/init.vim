@@ -25,7 +25,7 @@ set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-"  set shell=fish
+" set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
 
 " incremental substitution (neovim)
@@ -103,11 +103,19 @@ if has("nvim")
 
   " bufferline
   Plug 'akinsho/bufferline.nvim'
-  
+
+  " movement
+  Plug 'phaazon/hop.nvim'
+
+  " test 
+  Plug 'vim-test/vim-test' 
+
   " syntax stuff
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'windwp/nvim-autopairs'
+
+  Plug 'numToStr/comment.nvim'
 
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
@@ -154,18 +162,13 @@ endif
 runtime ./maps.vim
 "}}}
 
-" UI "{{{
+" requires "{{{
 " ---------------------------------------------------------------------
 
 lua require("_lualine")
 lua require("_bufferline")
-lua require("tree")
+lua require("nvimtree")
 
-"}}}
-
-" language things "{{{
-" ---------------------------------------------------------------------
-" golang
 lua require("treesitter")
 
 lua require("lsp_config")
@@ -174,6 +177,9 @@ lua require("_telescope")
 
 lua require("completition")
 
+lua require("comment")
+
+lua require("hop")
 
 
 autocmd BufWritePre *.go lua goimports()
