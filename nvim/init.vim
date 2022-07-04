@@ -110,6 +110,14 @@ if has("nvim")
   " test 
   Plug 'vim-test/vim-test' 
 
+  Plug 'rcarriga/neotest'
+  Plug 'nvim-neotest/neotest-go'
+
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
+  Plug 'leoluz/nvim-dap-go'
+  Plug 'antoinemadec/FixCursorHold.nvim'
+
   " syntax stuff
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'neovim/nvim-lspconfig'
@@ -169,6 +177,7 @@ lua require("_lualine")
 lua require("_bufferline")
 lua require("nvimtree")
 
+
 lua require("treesitter")
 
 lua require("lsp_config")
@@ -179,8 +188,7 @@ lua require("completition")
 
 lua require("comment")
 
-lua require("hop")
-
+lua require("_neotest")
 
 autocmd BufWritePre *.go lua goimports()
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting()

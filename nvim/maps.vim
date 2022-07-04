@@ -42,10 +42,10 @@ nnoremap <leader>e <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <leader>a <cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>
 
 " test
-nnoremap <silent> <leader>tn :TestNearest<CR>
-nnoremap <silent> <leader>tf :TestFile<CR>
-nnoremap <silent> <leader>ts :TestSuite<CR>
-nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tt :lua require("neotest").summary.toggle()<CR>
+nnoremap <silent> <leader>tn :lua require("neotest").run.run({extra_args = {"-race"}})<CR>
+nnoremap <silent> <leader>tf :lua require("neotest").run.run({vim.fn.expand("%"), extra_args = {"-race"}})<CR>
+nnoremap <silent> <leader>ta :lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {"-race"}})<CR>
 
 " comment
 nnoremap <silent> <leader>cl <Plug>(comment_toggle_current_linewise)
@@ -55,7 +55,7 @@ vnoremap <silent> <leader>c <Plug>(comment_toggle_linewise_visual)
 " Mapings: telescope
 nnoremap s <Nop>
 nnoremap sf <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap sg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap sa <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap sb <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 nnoremap sh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap so <cmd>lua require('telescope.builtin').oldfiles()<cr>
