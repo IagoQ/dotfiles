@@ -23,12 +23,13 @@ set tabstop=2
 set ai "Auto indent
 set si "Smart indent
 set lazyredraw
+set noswapfile
 ]])
 
 require("plugins")
 require("maps")
 require("configs")
--- require("autocmds")
+require("autocmds")
 
 vim.cmd("colorscheme onedarkpro")
 

@@ -5,14 +5,10 @@ vim.cmd([[
 
   call plug#begin()
 
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-
   if has("nvim")
     " fuzzy finder
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'folke/trouble.nvim'
     
     " file explorer
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -23,15 +19,13 @@ vim.cmd([[
     Plug 'f-person/git-blame.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
 
+    " lazy git
+    Plug 'kdheepak/lazygit.nvim'
+
     " bufferline
     Plug 'akinsho/bufferline.nvim'
 
-    " movement
-    Plug 'phaazon/hop.nvim'
-
     " test 
-    Plug 'vim-test/vim-test' 
-
     Plug 'rcarriga/neotest'
     Plug 'nvim-neotest/neotest-go'
 
@@ -56,7 +50,6 @@ vim.cmd([[
 
     Plug 'rafamadriz/friendly-snippets'
 
-    
     " themes 
     " Dracula Theme
     Plug 'Mofiqul/dracula.nvim'

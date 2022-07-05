@@ -22,6 +22,7 @@ map("v","<A-k>",":m '<-2<CR>gv==")
 -- NERDTree & terminal
 map("n","<C-f>",":NvimTreeToggle <CR>")
 map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
+map("n","<C-g>",":LazyGit <CR>")
 
 -- remove line numbers from terminal
 
