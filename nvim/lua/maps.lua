@@ -2,6 +2,18 @@ function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
+-- window navigation
+map("n","<C-h>", "<C-w>h")
+map("n","<C-j>", "<C-w>j")
+map("n","<C-k>", "<C-w>k")
+map("n","<C-l>", "<C-w>l")
+
+-- resize with arrow
+map("n", "<C-Up>", ":resize -2<CR>")
+map("n", "<C-Down>", ":resize +2<CR>")
+map("n", "<C-Left>", ":vertical resize -2<CR>")
+map("n", "<C-Right>", ":vertical resize +2<CR>")
+
 -- remove highlights after /
 map("n", "<esc>", ":noh<return><esc>")
 
@@ -24,17 +36,15 @@ map("n","<C-f>",":NvimTreeToggle <CR>")
 map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
 map("n","<C-g>",":LazyGit <CR>")
 
--- remove line numbers from terminal
-
 -- escape terminal
-map("t","<Esc>","<c-\\><c-n>")
 map("t","<C-o>","<c-\\><c-n><c-o>")
 map("t","<C-t>","<c-\\><c-n>:bd!<CR>")
-map("t","<C-w><C-c>","<c-\\><c-n>:bd!<CR>")
-map("t","<C-w><C-i>","<c-\\><c-n><c-w><c-i>")
-map("t","<C-w><C-j>","<c-\\><c-n><c-w><c-j>")
-map("t","<C-w><C-k>","<c-\\><c-n><c-w><c-k>")
-map("t","<C-w><C-l>","<c-\\><c-n><c-w><c-l>")
+
+map("t", "<C-h>", "<C-\\><C-N><C-w>h")
+map("t", "<C-j>", "<C-\\><C-N><C-w>j")
+map("t", "<C-k>", "<C-\\><C-N><C-w>k")
+map("t", "<C-l>", "<C-\\><C-N><C-w>l")
+
 
 -- bufferline 
 map("n","gb",":BufferLinePick<CR>")
@@ -45,13 +55,24 @@ map("n","K","<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n","<leader>rn","<cmd>lua vim.lsp.buf.rename()<CR>")
 map("n","<leader>f","<cmd>lua vim.lsp.buf.formatting()<CR>")
 map("n","<leader>e","<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-map("n","<leader>a","<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>")
+map("n","<leader>a","<cmd>lua vim.lsp.buf.code_action()<CR>")
 
 -- test
 map("n","<leader>tt",":lua require('neotest').summary.toggle()<CR>")
 map("n","<leader>tn",":lua require('neotest').run.run({extra_args = {'-race'}})<CR>")
 map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>ta",":lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'-race'}})<CR>")
+
+vim.keymap.set('n', '<Leader>tc', require("nvim-goc").Coverage, {silent=true})
+vim.keymap.set('n', '<Leader>tC', require("nvim-goc").ClearCoverage, {silent=true})
+
+-- debugging
+vim.keymap.set('n','<F7>', require("dap").step_out)
+vim.keymap.set('n','<F8>', require("dap").step_into)
+vim.keymap.set('n','<F9>', require("dap").step_over)
+vim.keymap.set('n','<Leader>db', require("dap").toggle_breakpoint)
+vim.keymap.set('n','<Leader>dt', require("dap-go").debug_test)
+
 
 -- comment
 map("n","<leader>cl","<Plug>(comment_toggle_current_linewise)")
@@ -67,6 +88,7 @@ map("n","sh","<cmd>lua require('telescope.builtin').help_tags()<CR>")
 map("n","so","<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 
 
+-- go to's
 map("n","gd","<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>")
 map("n","gv","<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>")
 map("n","gi","<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>")
@@ -74,4 +96,4 @@ map("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>")
 map("n","gs","<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
 map("n","gm","<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols='method'}<CR>")
 map("n","gw",":Telescope diagnostics bufnr=0<CR>")
-
+vim.keymap.set('n', 'gt', require("nvim-goc").Alternate, {silent=true})

@@ -1,71 +1,101 @@
-vim.cmd([[
-  if has("nvim")
-    let g:plug_home = stdpath('data') . '/plugged'
-  endif
+local fn = vim.fn
 
-  call plug#begin()
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
 
-  if has("nvim")
-    " fuzzy finder
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+-- Install your plugins here
+return packer.startup(function(use)
+  -- My plugins here
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  -- fuzzy finder
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-ui-select.nvim' 
     
-    " file explorer
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua'
+    -- file explorer
+    use 'kyazdani42/nvim-web-devicons' 
+    use 'kyazdani42/nvim-tree.lua'
     
-    " status line
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'f-person/git-blame.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
+    -- status line
+    use 'nvim-lualine/lualine.nvim'
+    use 'f-person/git-blame.nvim'
+    use 'kyazdani42/nvim-web-devicons'
 
-    " lazy git
-    Plug 'kdheepak/lazygit.nvim'
+    -- git
+    use 'kdheepak/lazygit.nvim'
+    use "lewis6991/gitsigns.nvim"
 
-    " bufferline
-    Plug 'akinsho/bufferline.nvim'
+    -- bufferline
+    use 'akinsho/bufferline.nvim'
 
-    " test 
-    Plug 'rcarriga/neotest'
-    Plug 'nvim-neotest/neotest-go'
+    -- test 
+    use 'rcarriga/neotest'
+    use 'nvim-neotest/neotest-go'
+    use 'rafaelsq/nvim-goc.lua'
 
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'rcarriga/nvim-dap-ui'
-    Plug 'leoluz/nvim-dap-go'
-    Plug 'antoinemadec/FixCursorHold.nvim'
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use 'rcarriga/nvim-dap-ui'
+    use 'nvim-telescope/telescope-dap.nvim'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'antoinemadec/FixCursorHold.nvim'
 
-    " syntax stuff
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'windwp/nvim-autopairs'
+    -- syntax stuff
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'neovim/nvim-lspconfig'
+    use 'windwp/nvim-autopairs'
+    use 'numToStr/comment.nvim'
 
-    Plug 'numToStr/comment.nvim'
+    -- autocomplete
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets'
 
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'L3MON4D3/LuaSnip'
+    -- themes 
+    use 'navarasu/onedark.nvim'  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if PACKER_BOOTSTRAP then
+    require("packer").sync()
+  end
+end)
 
-    Plug 'rafamadriz/friendly-snippets'
-
-    " themes 
-    " Dracula Theme
-    Plug 'Mofiqul/dracula.nvim'
-
-    " Carbon theme
-    Plug 'michaeldyrynda/carbon'
-
-    " One Dark Pro Theme
-    Plug 'olimorris/onedarkpro.nvim'
-
-    " Inspired Github Theme
-    Plug 'mvpopuk/inspired-github.vim'
-
-    " Iceberg Theme
-    Plug 'cocopon/iceberg.vim'
-  endif
-  call plug#end()
-]])
 

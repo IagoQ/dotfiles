@@ -14,5 +14,6 @@ require("configs/completition")
 require("configs/comment")
 
 require("configs/_neotest")
+require("configs/dap")
 
-
+require("configs/gitsigns")

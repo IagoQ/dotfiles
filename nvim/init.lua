@@ -21,7 +21,7 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 set ai "Auto indent
-set si "Smart indent
+" set si "Smart indent
 set lazyredraw
 set noswapfile
 ]])
@@ -31,6 +31,10 @@ require("maps")
 require("configs")
 require("autocmds")
 
-vim.cmd("colorscheme onedarkpro")
+
+require('onedark').setup {
+    style = 'dark' -- Dark, Darker, Cool, Deep, Warm, Warmer
+}
+require('onedark').load()
 
 
