@@ -3,10 +3,12 @@ local nvim_treesitter_configs = require('nvim-treesitter.configs')
 
 nvim_treesitter_configs.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = "all",
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
+
+  auto_install = true,
 
   highlight = {
     -- `false` will disable the whole extension
@@ -28,6 +30,7 @@ nvim_treesitter_configs.setup {
     "haskell",
     "lua",
     "json",
+    "typescript",
   }
 
 }

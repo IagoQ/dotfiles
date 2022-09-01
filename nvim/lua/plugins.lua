@@ -66,7 +66,7 @@ return packer.startup(function(use)
     -- test 
     use 'rcarriga/neotest'
     use 'nvim-neotest/neotest-go'
-    use 'rafaelsq/nvim-goc.lua'
+    use 'andythigpen/nvim-coverage'
 
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'
@@ -79,7 +79,10 @@ return packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
     use 'windwp/nvim-autopairs'
-    use 'numToStr/comment.nvim'
+    use "terrortylor/nvim-comment"
+    use "Djancyp/better-comments.nvim"
+
+    use "ThePrimeagen/refactoring.nvim"
 
     -- autocomplete
     use 'hrsh7th/nvim-cmp'
