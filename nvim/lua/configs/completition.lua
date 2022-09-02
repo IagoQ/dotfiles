@@ -16,6 +16,10 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+  preselect = cmp.PreselectMode.None,
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -25,30 +29,19 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        cmp.confirm({ select = true})
       else
         fallback()
       end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end,
+    end, { "i", "s" }),
   },
   sources = {
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'buffer' },
-	  { name = 'nvim_lsp_signature_help' },
+    { name = 'luasnip' },
   },
 }
 

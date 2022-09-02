@@ -76,11 +76,6 @@ vim.keymap.set('n','<Leader>db', require("dap").toggle_breakpoint)
 vim.keymap.set('n','<Leader>dt', require("dap-go").debug_test)
 
 
--- comment
--- map("n","<leader>cl",":CommentToggle")
--- map("n","<leader>c","")
--- map("v","<leader>c","<Plug>(comment_toggle_linewise_visual)")
-
 -- Mapings: telescope
 map("n","s","<Nop>")
 map("n","sf","<cmd>lua require('telescope.builtin').find_files()<CR>")
@@ -100,9 +95,6 @@ map("n","gm","<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols='
 map("n","gw",":Telescope diagnostics bufnr=0<CR>")
 
 
--- refactoring
--- load refactoring Telescope extension
-require("telescope").load_extension("refactoring")
 
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
@@ -111,7 +103,6 @@ vim.api.nvim_set_keymap(
 	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
 	{ noremap = true }
 )
-
 -- Remaps for the refactoring operations currently offered by the plugin
 vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
 vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
