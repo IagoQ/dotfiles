@@ -63,6 +63,10 @@ return packer.startup(function(use)
     -- bufferline
     use 'akinsho/bufferline.nvim'
 
+    -- go
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua'
+
     -- test 
     use 'rcarriga/neotest'
     use 'nvim-neotest/neotest-go'
@@ -77,7 +81,7 @@ return packer.startup(function(use)
 
     -- syntax stuff
     use 'nvim-treesitter/nvim-treesitter'
-    use 'neovim/nvim-lspconfig'
+    use 'nvim-treesitter/nvim-treesitter-context'
     use 'windwp/nvim-autopairs'
     use "terrortylor/nvim-comment"
     use "Djancyp/better-comments.nvim"
@@ -85,6 +89,7 @@ return packer.startup(function(use)
     use "ThePrimeagen/refactoring.nvim"
 
     -- autocomplete
+    use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'

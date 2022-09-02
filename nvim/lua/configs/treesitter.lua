@@ -20,7 +20,7 @@ nvim_treesitter_configs.setup {
     additional_vim_regex_highlighting = true,
   },
   indent = {
-    enable = true
+    enable = false
   },
   ensure_installed = {
 	  "go",

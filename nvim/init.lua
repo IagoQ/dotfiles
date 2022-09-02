@@ -14,14 +14,15 @@ set hlsearch
 set showcmd
 set cmdheight=1
 set laststatus=2
-set scrolloff=10
+set scrolloff=5
+set relativenumber
 set expandtab
 set ignorecase
 set smarttab
 set shiftwidth=2
 set tabstop=2
-set ai "Auto indent
-" set si "Smart indent
+" set ai "Auto indent
+set si "Smart indent
 set lazyredraw
 set noswapfile
 ]])

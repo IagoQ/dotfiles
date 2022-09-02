@@ -17,3 +17,5 @@ require("configs/_neotest")
 require("configs/dap")
 
 require("configs/gitsigns")
+
+require("configs/go")

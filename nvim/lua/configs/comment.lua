@@ -1,4 +1,4 @@
-require('better-comment').Setup()
+require('better-comment').Setup({})
 require('nvim_comment').setup({
   --create_mappings = false,
   line_mapping = "<leader>cl",
