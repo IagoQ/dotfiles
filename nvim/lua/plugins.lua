@@ -70,7 +70,7 @@ return packer.startup(function(use)
     -- test 
     use 'rcarriga/neotest'
     use 'nvim-neotest/neotest-go'
-    use 'andythigpen/nvim-coverage'
+    use "andythigpen/nvim-coverage"
 
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'

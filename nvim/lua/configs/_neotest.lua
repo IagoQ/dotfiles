@@ -25,13 +25,21 @@ neotest.setup({
       experimental = {
         test_table = true,
       },
-      args = { "-race", "-timeout=20s" }
+      args = { "-race", "-timeout=10s" }
     })
-  }
+  },
+  floating = {
+    max_height = 400,
+    max_width = 220,
+  },
+  running = {
+    concurrent = true
+  },
+  output = {
+    enabled = true
+  },
 })
 
-
--- default colors
 require("coverage").setup({
 	commands = true, -- create commands
 	highlights = {
@@ -42,14 +50,13 @@ require("coverage").setup({
 	signs = {
 		-- use your own highlight groups or text markers
 		covered = { hl = "CoverageCovered", text = "▎" },
-		uncovered = { hl = "CoverageUncovered", text = "▎" },
+		uncovered = { hl = "CoverageUncovered", text = "▎e" },
 	},
 	summary = {
 		-- customize the summary pop-up
-		min_coverage = 60.0,      -- minimum coverage threshold (used for highlighting)
+		min_coverage = 80.0,      -- minimum coverage threshold (used for highlighting)
 	},
 	lang = {
 		-- customize language specific settings
 	},
 })
-
