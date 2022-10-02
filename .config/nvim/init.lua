@@ -1,5 +1,3 @@
-
-
 vim.cmd([[
 set nocompatible
 set number
@@ -12,8 +10,8 @@ set background=dark
 set nobackup
 set hlsearch
 set showcmd
-set cmdheight=1
-set laststatus=2
+set cmdheight=0
+set laststatus=3
 set scrolloff=5
 set relativenumber
 set expandtab

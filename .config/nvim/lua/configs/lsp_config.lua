@@ -19,6 +19,8 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
+require("mason").setup()
+require("mason-lspconfig").setup()
 -- https://github.com/windwp/nvim-autopairs
 require('nvim-autopairs').setup()
 
@@ -32,6 +34,29 @@ nvim_lsp.clangd.setup{
 	capabilities = capabilities,
   on_attach = on_attach,
 }
+
+-- rust 
+nvim_lsp.rust_analyzer.setup({
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
 
 -- haskell
 nvim_lsp.hls.setup {

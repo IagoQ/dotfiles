@@ -48,8 +48,6 @@ map("t", "<C-j>", "<C-\\><C-N><C-w>j")
 map("t", "<C-k>", "<C-\\><C-N><C-w>k")
 map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
-
-
 -- lsp 
 map("n","K","<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n","<leader>rn","<cmd>lua vim.lsp.buf.rename()<CR>")
