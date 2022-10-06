@@ -3,8 +3,6 @@ local nvim_treesitter_configs = require('nvim-treesitter.configs')
 
 nvim_treesitter_configs.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "all",
-
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
@@ -18,6 +16,7 @@ nvim_treesitter_configs.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
+    disable = { "text" },
   },
   indent = {
     enable = false

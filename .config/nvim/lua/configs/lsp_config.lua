@@ -1,9 +1,3 @@
-local nvim_lsp = require('lspconfig')
-local protocol = require('vim.lsp.protocol')
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 vim.diagnostic.config({
   virtual_text = true,
   signs = false,
@@ -12,77 +6,85 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- document-color.nvim
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
+  end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Mappings.
+  local opts = { noremap = true, silent = true }
+
+  buf_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
+  buf_set_keymap("n", "gdv", "<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>", opts)
+  buf_set_keymap("n", "gD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>", opts)
+  buf_set_keymap("n", "gDv", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
+
+  buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>",opts)
+  buf_set_keymap("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>",opts)
+  buf_set_keymap("n","gs","<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>",opts)
+
+  buf_set_keymap("n","gw",":Telescope diagnostics bufnr=0<CR>",opts)
+
+  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+
+  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting({ async = true })<CR>", opts)
+
 end
 
-require("mason").setup()
-require("mason-lspconfig").setup()
--- https://github.com/windwp/nvim-autopairs
-require('nvim-autopairs').setup()
-
--- c/c++
-nvim_lsp.clangd.setup{
-  cmd = {
-            "clangd",
-            "--background-index",
-            "--suggest-missing-includes",
-        },  
-	capabilities = capabilities,
-  on_attach = on_attach,
+local servers = {
+  -- LSP
+  "bashls",
+  "clangd",
+  "dockerls",
+  "gopls",
+  "jsonls",
+  "rust_analyzer",
+  "sumneko_lua",
+  "hls",
+  "yamlls",
 }
 
--- rust 
-nvim_lsp.rust_analyzer.setup({
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
+local others = {
+  -- Debuggers
+  "codelldb",
+
+  -- Linters
+  "eslint_d",
+
+  -- Formatters
+  "black",
+  "prettier",
+  "shfmt",
+}
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = servers,
+  automatic_installation = true,
 })
 
--- haskell
-nvim_lsp.hls.setup {
-  settings = {
-    haskell = {
-      formattingProvider = 'stylish-haskell',
-    },
-  },
-  on_attach = on_attach,
-}
+for _, name in ipairs(servers) do
+  local ok, server = require('lspconfig')[name].setup({
+     on_attach = on_attach,
+  })
+end
 
--- golang
-nvim_lsp.gopls.setup{
-	cmd = {'gopls'},
-	-- for postfix snippets and analyzers
-	capabilities = capabilities,
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-     },
-     staticcheck = true,
-    },
-  },
-  on_attach = on_attach,
-}
+-- document-color.nvim
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+-- You are now capable!
+capabilities.textDocument.colorProvider = true

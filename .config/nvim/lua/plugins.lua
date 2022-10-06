@@ -53,8 +53,8 @@ return packer.startup(function(use)
     
     -- status line
     use 'nvim-lualine/lualine.nvim'
-    use 'f-person/git-blame.nvim'
     use 'kyazdani42/nvim-web-devicons'
+    use 'f-person/git-blame.nvim'
 
     -- git
     use 'kdheepak/lazygit.nvim'
@@ -63,14 +63,9 @@ return packer.startup(function(use)
     -- bufferline
     use 'akinsho/bufferline.nvim'
 
-    -- go
-    use 'ray-x/go.nvim'
-    use 'ray-x/guihua.lua'
-
     -- test 
     use 'rcarriga/neotest'
     use 'nvim-neotest/neotest-go'
-    use "andythigpen/nvim-coverage"
 
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'
