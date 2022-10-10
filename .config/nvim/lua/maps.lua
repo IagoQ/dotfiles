@@ -48,12 +48,6 @@ map("t", "<C-j>", "<C-\\><C-N><C-w>j")
 map("t", "<C-k>", "<C-\\><C-N><C-w>k")
 map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
--- -- lsp 
--- map("n","K","<Cmd>lua vim.lsp.buf.hover()<CR>")
--- map("n","<leader>rn","<cmd>lua vim.lsp.buf.rename()<CR>")
--- map("n","<leader>f","<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
--- map("n","<leader>e","<cmd>lua vim.diagnostic.open_float()<CR>")
--- map("n","<leader>a","<cmd>lua vim.lsp.buf.code_action()<CR>")
 
 -- test
 map("n","<leader>tt",":lua require('neotest').summary.toggle()<CR>")
@@ -78,16 +72,6 @@ map("n","sa","<cmd>lua require('telescope.builtin').live_grep()<CR>")
 map("n","sb","<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
 map("n","sh","<cmd>lua require('telescope.builtin').help_tags()<CR>")
 map("n","so","<cmd>lua require('telescope.builtin').oldfiles()<CR>")
-
-
--- -- go to's
--- map("n","gd","<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>")
--- map("n","gv","<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>")
--- map("n","gi","<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>")
--- map("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>")
--- map("n","gs","<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>")
--- map("n","gm","<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbols='method'}<CR>")
--- map("n","gw",":Telescope diagnostics bufnr=0<CR>")
 
 -- bufferline 
 map("n","gb",":BufferLinePick<CR>")

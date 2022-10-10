@@ -6,6 +6,7 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 
+local navic = require("nvim-navic")
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -16,6 +17,10 @@ local on_attach = function(client, bufnr)
 
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
   end
 
   -- Enable completion triggered by <c-x><c-o>

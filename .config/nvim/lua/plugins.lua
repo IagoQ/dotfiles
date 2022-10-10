@@ -45,16 +45,17 @@ return packer.startup(function(use)
   -- fuzzy finder
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-ui-select.nvim' 
-    
+    use 'nvim-telescope/telescope-ui-select.nvim'
+
     -- file explorer
-    use 'kyazdani42/nvim-web-devicons' 
+    use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
-    
+
     -- status line
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-web-devicons'
     use 'f-person/git-blame.nvim'
+    use "SmiteshP/nvim-navic"
 
     -- git
     use 'kdheepak/lazygit.nvim'
@@ -85,7 +86,7 @@ return packer.startup(function(use)
 
     -- autocomplete
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason.nvim' 
+    use 'williamboman/mason.nvim'
     use "williamboman/mason-lspconfig.nvim"
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -96,7 +97,10 @@ return packer.startup(function(use)
     use 'rafamadriz/friendly-snippets'
 
     -- themes 
-    use 'navarasu/onedark.nvim'  -- Automatically set up your configuration after cloning packer.nvim
+    use 'navarasu/onedark.nvim'
+    use 'catppuccin/nvim'
+    use 'folke/tokyonight.nvim'
+
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
