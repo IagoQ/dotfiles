@@ -35,6 +35,10 @@ require("autocmds")
 --     style = 'dark' -- Dark, Darker, Cool, Deep, Warm, Warmer
 -- }
 -- require('onedark').load()
+require("tokyonight").setup({
+  -- use the night style
+  style = "night",
+})
 vim.cmd[[colorscheme tokyonight]]
 
 

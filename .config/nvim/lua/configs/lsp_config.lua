@@ -30,9 +30,9 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   buf_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
-  buf_set_keymap("n", "gdv", "<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>", opts)
+  buf_set_keymap("n", "gvd", "<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>", opts)
   buf_set_keymap("n", "gD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>", opts)
-  buf_set_keymap("n", "gDv", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
+  buf_set_keymap("n", "gvD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
 
   buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>",opts)
   buf_set_keymap("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>",opts)

@@ -5,8 +5,7 @@ end
 
 -- , and Tab are free 
 
--- window navigation
-map("n","<C-h>", "<C-w>h")
+-- window navigation map("n","<C-h>", "<C-w>h")
 map("n","<C-j>", "<C-w>j")
 map("n","<C-k>", "<C-w>k")
 map("n","<C-l>", "<C-w>l")
@@ -16,6 +15,12 @@ map("n", "<C-Up>", ":resize -2<CR>")
 map("n", "<C-Down>", ":resize +2<CR>")
 map("n", "<C-Left>", ":vertical resize -2<CR>")
 map("n", "<C-Right>", ":vertical resize +2<CR>")
+
+-- Copy/paste to clipboard
+map("v","<leader>y",  "\"+y")
+map("n","<leader>y",  "\"+y")
+map("v","<leader>p",  "\"+p")
+map("n","<leader>p",  "\"+p")
 
 -- remove highlights after /
 map("n", "<esc>", ":noh<return><esc>")
