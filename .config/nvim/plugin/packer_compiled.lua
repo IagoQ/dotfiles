@@ -234,6 +234,11 @@ _G.packer_plugins = {
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/onedark.nvim",
     url = "https://github.com/navarasu/onedark.nvim"
   },
+  ["oxocarbon.nvim"] = {
+    loaded = true,
+    path = "/home/iago/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
+    url = "https://github.com/nyoom-engineering/oxocarbon.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -268,6 +273,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["vim-enfocado"] = {
+    loaded = true,
+    path = "/home/iago/.local/share/nvim/site/pack/packer/start/vim-enfocado",
+    url = "https://github.com/wuelnerdotexe/vim-enfocado"
   }
 }
 

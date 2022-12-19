@@ -39,6 +39,9 @@ require("tokyonight").setup({
   -- use the night style
   style = "night",
 })
-vim.cmd[[colorscheme tokyonight]]
+
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd("colorscheme oxocarbon")
+-- vim.cmd("colorscheme tokyonight")
 
 

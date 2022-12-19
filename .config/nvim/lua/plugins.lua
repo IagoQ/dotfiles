@@ -100,6 +100,8 @@ return packer.startup(function(use)
     use 'navarasu/onedark.nvim'
     use 'catppuccin/nvim'
     use 'folke/tokyonight.nvim'
+    use 'wuelnerdotexe/vim-enfocado'
+    use {'nyoom-engineering/oxocarbon.nvim'}
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
