@@ -58,7 +58,7 @@ local servers = {
   "gopls",
   "jsonls",
   "rust_analyzer",
-  "sumneko_lua",
+  "lua_ls",
   "hls",
   "yamlls",
 }

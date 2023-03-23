@@ -56,9 +56,10 @@ map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
 -- test
 map("n","<leader>tt",":lua require('neotest').summary.toggle()<CR>")
+map("n","<leader>tp",":lua require('neotest').output_panel.toggle()<CR>")
 map("n","<leader>tn",":lua require('neotest').run.run({extra_args = {'-race'}})<CR>")
 map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
-map("n","<leader>ta",":lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'-race'}})<CR>")
+map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>ta",":lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'-race'}})<CR>")
 
 
@@ -77,6 +78,8 @@ map("n","sa","<cmd>lua require('telescope.builtin').live_grep()<CR>")
 map("n","sb","<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
 map("n","sh","<cmd>lua require('telescope.builtin').help_tags()<CR>")
 map("n","so","<cmd>lua require('telescope.builtin').oldfiles()<CR>")
+map("n","sq","<cmd>lua require('telescope.builtin').quickfix()<CR>")
+map("n","sj","<cmd>lua require('telescope.builtin').jumplist()<CR>")
 
 -- bufferline 
 map("n","gb",":BufferLinePick<CR>")

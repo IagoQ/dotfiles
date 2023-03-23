@@ -25,7 +25,7 @@ neotest.setup({
       experimental = {
         test_table = true,
       },
-      args = { "-race", "-timeout=10s" }
+      args = { "-race", "-timeout=40s" }
     })
   },
   floating = {
@@ -35,7 +35,11 @@ neotest.setup({
   running = {
     concurrent = true
   },
+  quickfix = {
+    enabled = true,
+    open = false
+  },
   output = {
-    enabled = true
+    enabled = false
   },
 })

@@ -98,7 +98,7 @@ return packer.startup(function(use)
 
     -- themes 
     use 'navarasu/onedark.nvim'
-    use 'catppuccin/nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     use 'folke/tokyonight.nvim'
     use 'wuelnerdotexe/vim-enfocado'
     use {'nyoom-engineering/oxocarbon.nvim'}
