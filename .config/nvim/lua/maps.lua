@@ -3,8 +3,6 @@ function map(mode, shortcut, command)
 end
 
 
--- , and Tab are free 
-
 -- window navigation map("n","<C-h>", "<C-w>h")
 map("n","<C-j>", "<C-w>j")
 map("n","<C-k>", "<C-w>k")
@@ -58,7 +56,6 @@ map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 map("n","<leader>tt",":lua require('neotest').summary.toggle()<CR>")
 map("n","<leader>tp",":lua require('neotest').output_panel.toggle()<CR>")
 map("n","<leader>tn",":lua require('neotest').run.run({extra_args = {'-race'}})<CR>")
-map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>ta",":lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'-race'}})<CR>")
 

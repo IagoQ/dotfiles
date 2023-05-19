@@ -59,7 +59,7 @@ local servers = {
   "jsonls",
   "rust_analyzer",
   "lua_ls",
-  "hls",
+  -- "hls",
   "yamlls",
 }
 

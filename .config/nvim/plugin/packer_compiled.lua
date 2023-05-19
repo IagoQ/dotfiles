@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/iago/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -158,11 +163,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/iago/.local/share/nvim/site/pack/packer/start/neotest-go",
     url = "https://github.com/nvim-neotest/neotest-go"
-  },
-  nvim = {
-    loaded = true,
-    path = "/home/iago/.local/share/nvim/site/pack/packer/start/nvim",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
