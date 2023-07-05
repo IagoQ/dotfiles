@@ -1,114 +1,73 @@
 local fn = vim.fn
 
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+-- autoinstall lazynvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
--- Install your plugins here
-return packer.startup(function(use)
-  -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  -- fuzzy finder
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-ui-select.nvim'
-    use "ahmedkhalf/project.nvim"
-
-    -- file explorer
-    use 'kyazdani42/nvim-web-devicons'
-    use 'kyazdani42/nvim-tree.lua'
-
-    -- status line
-    use 'nvim-lualine/lualine.nvim'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'f-person/git-blame.nvim'
-    use "SmiteshP/nvim-navic"
-
-    -- git
-    use 'kdheepak/lazygit.nvim'
-    use "lewis6991/gitsigns.nvim"
-
-    -- bufferline
-    use 'akinsho/bufferline.nvim'
-
-    -- test 
-    use 'rcarriga/neotest'
-    use 'nvim-neotest/neotest-go'
-
-    use 'mfussenegger/nvim-dap'
-    use 'leoluz/nvim-dap-go'
-    use 'rcarriga/nvim-dap-ui'
-    use 'nvim-telescope/telescope-dap.nvim'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'antoinemadec/FixCursorHold.nvim'
-
-    -- syntax stuff
-    use 'nvim-treesitter/nvim-treesitter'
-    use 'nvim-treesitter/nvim-treesitter-context'
-    use 'windwp/nvim-autopairs'
-    use "terrortylor/nvim-comment"
-    use "Djancyp/better-comments.nvim"
-
-    use "ThePrimeagen/refactoring.nvim"
-
-    -- autocomplete
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason.nvim'
-    use "williamboman/mason-lspconfig.nvim"
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lsp-signature-help'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'L3MON4D3/LuaSnip'
-    use 'rafamadriz/friendly-snippets'
+vim.opt.rtp:prepend(lazypath)
 
 
-    -- themes 
-    use 'navarasu/onedark.nvim'
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use 'folke/tokyonight.nvim'
-    use 'wuelnerdotexe/vim-enfocado'
-    use {'nyoom-engineering/oxocarbon.nvim'}
+require("lazy").setup({
+  "folke/which-key.nvim",
+  "folke/neodev.nvim",
 
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
+  'nvim-telescope/telescope-ui-select.nvim',
 
+  'kyazdani42/nvim-web-devicons',
+  'kyazdani42/nvim-tree.lua',
 
+  'nvim-lualine/lualine.nvim',
+  'kyazdani42/nvim-web-devicons',
+  'f-person/git-blame.nvim',
+  "SmiteshP/nvim-navic",
+
+  'kdheepak/lazygit.nvim',
+  "lewis6991/gitsigns.nvim",
+
+  'akinsho/bufferline.nvim',
+
+  'rcarriga/neotest',
+  'nvim-neotest/neotest-go',
+
+  'mfussenegger/nvim-dap',
+  'leoluz/nvim-dap-go',
+  'rcarriga/nvim-dap-ui',
+  'nvim-telescope/telescope-dap.nvim',
+  'theHamsta/nvim-dap-virtual-text',
+  'antoinemadec/FixCursorHold.nvim',
+
+  'nvim-treesitter/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter-context',
+  'windwp/nvim-autopairs',
+  "terrortylor/nvim-comment",
+  "Djancyp/better-comments.nvim",
+
+  "ThePrimeagen/refactoring.nvim",
+
+  'neovim/nvim-lspconfig',
+  'williamboman/mason.nvim',
+  "williamboman/mason-lspconfig.nvim",
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-nvim-lsp-signature-help',
+  'saadparwaiz1/cmp_luasnip',
+  'L3MON4D3/LuaSnip',
+  'rafamadriz/friendly-snippets',
+
+  'navarasu/onedark.nvim',
+  { "catppuccin/nvim", as = "catppuccin" },
+  'folke/tokyonight.nvim',
+  'wuelnerdotexe/vim-enfocado',
+  {'nyoom-engineering/oxocarbon.nvim'},
+})

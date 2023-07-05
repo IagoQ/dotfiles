@@ -5,14 +5,9 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
+  open_on_tab = false,
   sort_by = "name",
   update_cwd = false,
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true
-  },
   view = {
     width = 45,
     side = "left",
@@ -44,6 +39,11 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     enable = true,
     auto_open = true,
   },
+  update_focused_file = {
+    enable = false,
+    update_cwd = false,
+    ignore_list = {},
+  },
   system_open = {
     cmd = nil,
     args = {},
@@ -65,7 +65,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   git = {
     enable = true,
-    ignore = false,
+    ignore = true,
     timeout = 400,
   },
   actions = {

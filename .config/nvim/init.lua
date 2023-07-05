@@ -1,6 +1,6 @@
 vim.cmd([[
-set number
 set nocompatible
+set number
 syntax enable
 set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
@@ -21,6 +21,7 @@ set shiftwidth=2
 set tabstop=2
 " set ai "Auto indent
 set si "Smart indent
+set lazyredraw
 set noswapfile
 ]])
 
