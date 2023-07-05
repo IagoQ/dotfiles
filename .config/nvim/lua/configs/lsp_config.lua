@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>",opts)
   buf_set_keymap("n","gs","<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>",opts)
 
-  buf_set_keymap("n","gw",":Telescope diagnostics bufnr=0<CR>",opts)
+  buf_set_keymap("n","gw",":Telescope diagnostics<CR>",opts)
 
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -61,20 +61,12 @@ local servers = {
   "lua_ls",
   -- "hls",
   "yamlls",
+  'tsserver',
+  'eslint',
+  'html',
+  'cssls'
 }
 
-local others = {
-  -- Debuggers
-  "codelldb",
-
-  -- Linters
-  "eslint_d",
-
-  -- Formatters
-  "black",
-  "prettier",
-  "shfmt",
-}
 
 require("mason").setup()
 require("mason-lspconfig").setup({

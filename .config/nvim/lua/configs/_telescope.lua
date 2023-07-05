@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-local actions = require("telescope.actions")
 
 
 telescope.setup {
@@ -39,5 +38,11 @@ telescope.setup {
 }
 
 
+require("project_nvim").setup{}
+
 telescope.load_extension("ui-select")
 telescope.load_extension("refactoring")
+telescope.load_extension('projects')
+
+
+

@@ -46,6 +46,7 @@ return packer.startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-ui-select.nvim'
+    use "ahmedkhalf/project.nvim"
 
     -- file explorer
     use 'kyazdani42/nvim-web-devicons'
@@ -95,6 +96,7 @@ return packer.startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'
+
 
     -- themes 
     use 'navarasu/onedark.nvim'

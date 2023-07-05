@@ -21,7 +21,6 @@ set shiftwidth=2
 set tabstop=2
 " set ai "Auto indent
 set si "Smart indent
-set lazyredraw
 set noswapfile
 ]])
 

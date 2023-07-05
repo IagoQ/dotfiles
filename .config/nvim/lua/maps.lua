@@ -70,13 +70,15 @@ vim.keymap.set('n','<Leader>dt', require("dap-go").debug_test)
 
 -- Mapings: telescope
 map("n","s","<Nop>")
-map("n","sf","<cmd>lua require('telescope.builtin').find_files()<CR>")
 map("n","sa","<cmd>lua require('telescope.builtin').live_grep()<CR>")
+map("n","sf","<cmd>lua require('telescope.builtin').find_files()<CR>")
 map("n","sb","<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
 map("n","sh","<cmd>lua require('telescope.builtin').help_tags()<CR>")
 map("n","so","<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 map("n","sq","<cmd>lua require('telescope.builtin').quickfix()<CR>")
+map("n","sm","<cmd>lua require('telescope.builtin').marks()<CR>")
 map("n","sj","<cmd>lua require('telescope.builtin').jumplist()<CR>")
+map("n","sp", "<cmd>lua require('telescope').extensions.projects.projects{}<CR>")
 
 -- bufferline 
 map("n","gb",":BufferLinePick<CR>")
