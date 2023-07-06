@@ -59,22 +59,9 @@ local servers = {
   "jsonls",
   "rust_analyzer",
   "lua_ls",
-  "hls",
   "yamlls",
 }
 
-local others = {
-  -- Debuggers
-  "codelldb",
-
-  -- Linters
-  "eslint_d",
-
-  -- Formatters
-  "black",
-  "prettier",
-  "shfmt",
-}
 
 require("mason").setup()
 require("mason-lspconfig").setup({
