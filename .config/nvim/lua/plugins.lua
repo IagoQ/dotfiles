@@ -56,7 +56,8 @@ require("lazy").setup({
 
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
-  "williamboman/mason-lspconfig.nvim",
+  'williamboman/mason-lspconfig.nvim',
+  'jose-elias-alvarez/null-ls.nvim',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',

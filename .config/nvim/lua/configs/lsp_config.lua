@@ -69,6 +69,14 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
 })
 
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+         null_ls.builtins.diagnostics.golangci_lint
+    },
+})
+
 for _, name in ipairs(servers) do
   local ok, server = require('lspconfig')[name].setup({
      on_attach = on_attach,
