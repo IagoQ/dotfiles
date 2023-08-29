@@ -2,7 +2,6 @@ function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = false })
 end
 
-
 -- , and Tab are free 
 
 -- window navigation map("n","<C-h>", "<C-w>h")
@@ -31,7 +30,6 @@ map("v","<C-S>","<C-C>:update<CR>")
 map("i","<C-S>","<C-O>:update<CR>")
 
 -- move lines
-
 map("n","<A-j>",":m .+1<CR>==")
 map("n","<A-k>",":m .-2<CR>==")
 map("i","<A-j>","<Esc>:m .+1<CR>==")
@@ -41,17 +39,9 @@ map("v","<A-k>",":m '<-2<CR>gv==")
 
 -- NERDTree & terminal
 map("n","<C-f>",":NvimTreeToggle <CR>")
-map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
 map("n","<C-g>",":LazyGit <CR>")
+-- map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
 
--- escape terminal
-map("t","<C-o>","<c-\\><c-n><c-o>")
-map("t","<C-t>","<c-\\><c-n>:bd!<CR>")
-
-map("t", "<C-h>", "<C-\\><C-N><C-w>h")
-map("t", "<C-j>", "<C-\\><C-N><C-w>j")
-map("t", "<C-k>", "<C-\\><C-N><C-w>k")
-map("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
 
 -- test
@@ -61,15 +51,6 @@ map("n","<leader>tn",":lua require('neotest').run.run({extra_args = {'-race'}})<
 map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>tf",":lua require('neotest').run.run({vim.fn.expand('%'), extra_args = {'-race'}})<CR>")
 map("n","<leader>ta",":lua require('neotest').run.run({vim.fn.getcwd(), extra_args = {'-race'}})<CR>")
-
-
--- debugging
-vim.keymap.set('n','<F7>', require("dap").step_out)
-vim.keymap.set('n','<F8>', require("dap").step_into)
-vim.keymap.set('n','<F9>', require("dap").step_over)
-vim.keymap.set('n','<Leader>db', require("dap").toggle_breakpoint)
-vim.keymap.set('n','<Leader>dt', require("dap-go").debug_test)
-
 
 -- Mapings: telescope
 map("n","s","<Nop>")
@@ -81,15 +62,20 @@ map("n","so","<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 map("n","sq","<cmd>lua require('telescope.builtin').quickfix()<CR>")
 map("n","sj","<cmd>lua require('telescope.builtin').jumplist()<CR>")
 
--- bufferline 
-map("n","gb",":BufferLinePick<CR>")
-map("n","gB",":BufferLinePickClose<CR>")
+map("n",",","<Nop>")
+-- harpoon
+map("n",";","<Nop>")
+vim.keymap.set("n", ";;", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", ";l", require("harpoon.mark").add_file)
+vim.keymap.set("n", ";k", require("harpoon.ui").nav_prev)
+vim.keymap.set("n", ";j", require("harpoon.ui").nav_next)
+vim.keymap.set("n", ";1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", ";2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", ";3", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set("n", ";4", function() require("harpoon.ui").nav_file(4) end)
+vim.keymap.set("n", ";5", function() require("harpoon.ui").nav_file(5) end)
+vim.keymap.set("n", ";6", function() require("harpoon.ui").nav_file(6) end)
+vim.keymap.set("n", ";7", function() require("harpoon.ui").nav_file(7) end)
+vim.keymap.set("n", ";8", function() require("harpoon.ui").nav_file(8) end)
+vim.keymap.set("n", ";9", function() require("harpoon.ui").nav_file(9) end)
 
-
--- remap to open the Telescope refactoring menu in visual mode
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true, silent = true }
-)

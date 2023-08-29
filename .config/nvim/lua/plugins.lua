@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup({
-  "folke/which-key.nvim",
   "folke/neodev.nvim",
 
   'nvim-lua/plenary.nvim',
@@ -34,25 +33,17 @@ require("lazy").setup({
   'kdheepak/lazygit.nvim',
   "lewis6991/gitsigns.nvim",
 
-  'akinsho/bufferline.nvim',
+  'ThePrimeagen/harpoon',
 
   'rcarriga/neotest',
   'nvim-neotest/neotest-go',
 
-  'mfussenegger/nvim-dap',
-  'leoluz/nvim-dap-go',
-  'rcarriga/nvim-dap-ui',
-  'nvim-telescope/telescope-dap.nvim',
-  'theHamsta/nvim-dap-virtual-text',
-  'antoinemadec/FixCursorHold.nvim',
-
   'nvim-treesitter/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter-textobjects',
   'nvim-treesitter/nvim-treesitter-context',
-  'windwp/nvim-autopairs',
+  'RRethy/nvim-treesitter-textsubjects',
   "terrortylor/nvim-comment",
   "Djancyp/better-comments.nvim",
-
-  "ThePrimeagen/refactoring.nvim",
 
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
@@ -62,6 +53,7 @@ require("lazy").setup({
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-nvim-lsp-signature-help',
+
   'saadparwaiz1/cmp_luasnip',
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',

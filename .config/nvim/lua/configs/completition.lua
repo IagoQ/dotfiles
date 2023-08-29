@@ -44,5 +44,3 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
-require('refactoring').setup({})
