@@ -42,8 +42,6 @@ map("n","<C-f>",":NvimTreeToggle <CR>")
 map("n","<C-g>",":LazyGit <CR>")
 -- map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
 
-
-
 -- test
 map("n","<leader>tt",":lua require('neotest').summary.toggle()<CR>")
 map("n","<leader>tp",":lua require('neotest').output_panel.toggle()<CR>")

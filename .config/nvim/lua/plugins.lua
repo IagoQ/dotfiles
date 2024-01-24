@@ -48,7 +48,7 @@ require("lazy").setup({
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -58,9 +58,11 @@ require("lazy").setup({
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
 
+
   'navarasu/onedark.nvim',
   { "catppuccin/nvim", as = "catppuccin" },
   'folke/tokyonight.nvim',
   'wuelnerdotexe/vim-enfocado',
   {'nyoom-engineering/oxocarbon.nvim'},
 })
+

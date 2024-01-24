@@ -6,7 +6,7 @@ nvim_treesitter_configs.setup {
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
-  auto_install = true,
+  auto_install = false,
 
   highlight = {
     -- `false` will disable the whole extension

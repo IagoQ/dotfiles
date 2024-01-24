@@ -86,6 +86,8 @@ for _, name in ipairs(servers) do
   })
 end
 
+require('lspconfig').solargraph.setup({})
+
 -- document-color.nvim
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
