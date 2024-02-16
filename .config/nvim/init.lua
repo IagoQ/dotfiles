@@ -43,12 +43,6 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.go" },
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-})
 
 require("tokyonight").setup({
   -- use the night style

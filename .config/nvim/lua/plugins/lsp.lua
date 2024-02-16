@@ -15,7 +15,7 @@ return {
     'folke/neodev.nvim',
     'nvimtools/none-ls.nvim',
   },
-  config = function ()
+  config = function()
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
@@ -39,20 +39,29 @@ return {
       buf_set_keymap("n", "gD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>", opts)
       buf_set_keymap("n", "gvD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
 
-      buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>",opts)
-      buf_set_keymap("n","gr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>",opts)
-      buf_set_keymap("n","gs","<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>",opts)
+      buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
+      buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", opts)
+      buf_set_keymap("n", "gs", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
 
-      buf_set_keymap("n","gw",":Telescope diagnostics bufnr=0<CR>",opts)
+      buf_set_keymap("n", "gw", ":Telescope diagnostics<CR>", opts)
 
       buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
       buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+      buf_set_keymap("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
       buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
       buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting({ async = true })<CR>", opts)
 
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*" },
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
     end
 
     local servers = {
@@ -78,14 +87,15 @@ return {
 
     local null_ls = require("null-ls")
     null_ls.setup({
-        sources = {
-             null_ls.builtins.diagnostics.golangci_lint
-        },
+      sources = {
+        null_ls.builtins.diagnostics.golangci_lint
+      },
     })
+
 
     for _, name in ipairs(servers) do
       local ok, server = require('lspconfig')[name].setup({
-         on_attach = on_attach,
+        on_attach = on_attach,
       })
     end
 

@@ -19,4 +19,4 @@ alias gc "git commit -m"
 
 # fish_config theme save "TokyoNight Night"
 
-status --is-interactive; and /home/iago/.rbenv/bin/rbenv init - fish | source
+# status --is-interactive; and /home/iago/.rbenv/bin/rbenv init - fish | source
