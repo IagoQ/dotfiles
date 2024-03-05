@@ -3,6 +3,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
+    "debugloop/telescope-undo.nvim",
     'kyazdani42/nvim-web-devicons',
   },
   config = function()
@@ -40,11 +41,15 @@ return {
       },
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown {
-            -- even more opts
-          } }
+          require("telescope.themes").get_dropdown {}
+        },
+        undo = {
+          -- telescope-undo.nvim config, see below
+        },
+
       }
     }
     telescope.load_extension("ui-select")
+    telescope.load_extension("undo")
   end
 }

@@ -10,6 +10,7 @@ map("n", "<C-l>", "<C-w>l")
 
 -- resize with arrow
 map("n", "<C-Up>", ":resize -2<CR>")
+
 map("n", "<C-Down>", ":resize +2<CR>")
 map("n", "<C-Left>", ":vertical resize -2<CR>")
 map("n", "<C-Right>", ":vertical resize +2<CR>")
@@ -22,9 +23,9 @@ map("n", "<leader>p", "\"0p")
 map("n", "<esc>", ":noh<return><esc>")
 
 -- save on ctrls s
-map("n", "<C-S>", ":update<CR>")
-map("v", "<C-S>", "<C-C>:update<CR>")
-map("i", "<C-S>", "<C-O>:update<CR>")
+map("n", "<C-S>", ":wa!<CR>")
+map("v", "<C-S>", "<Esc>:wa!<CR>")
+map("i", "<C-S>", "<Esc>:wa!<CR>")
 
 -- move lines
 map("n", "<A-j>", ":m .+1<CR>")
@@ -41,6 +42,7 @@ map("n", "<C-g>", ":LazyGit <CR>")
 
 -- Mapings: telescope
 map("n", "s", "<Nop>")
+map("v", "s", "<Nop>")
 map("n", "sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
 map("n", "sa", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
 map("n", "sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
@@ -48,8 +50,9 @@ map("n", "sh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 map("n", "so", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 map("n", "sq", "<cmd>lua require('telescope.builtin').quickfix()<CR>")
 map("n", "sj", "<cmd>lua require('telescope.builtin').jumplist()<CR>")
-map("v", "s", "<Nop>")
-map("v", "sv", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
+map("n", "su", "<cmd>Telescope undo<cr>")
+map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
+map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
 -- harpoon
 vim.keymap.set("n", "<leader><space>", require("harpoon.ui").toggle_quick_menu)

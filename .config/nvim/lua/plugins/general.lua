@@ -1,6 +1,7 @@
 return {
   'kdheepak/lazygit.nvim',
 
+  'mbbill/undotree',
   'ThePrimeagen/harpoon',
   {
     "lewis6991/gitsigns.nvim",
@@ -21,9 +22,9 @@ return {
 
   {
     'kyazdani42/nvim-tree.lua',
-     dependencies = {
-       'kyazdani42/nvim-web-devicons'
-     },
+    dependencies = {
+      'kyazdani42/nvim-web-devicons'
+    },
     opts = {
       view = {
         width = 45,
@@ -71,7 +72,8 @@ return {
     }
   },
 
-  { 'nvim-lualine/lualine.nvim',
+  {
+    'nvim-lualine/lualine.nvim',
     lazy = false,
     init = function()
       vim.g.lualine_laststatus = vim.o.laststatus
@@ -86,12 +88,12 @@ return {
     dependencies = {
       'f-person/git-blame.nvim',
     },
-    config = function ()
+    config = function()
       local git_blame = require('gitblame')
       vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
       vim.g.gitblame_date_format = '%r'
       require('lualine').setup({
-      disabled_filetypes = {
+        disabled_filetypes = {
           statusline = {},
           winbar = {
             "help",
@@ -106,52 +108,59 @@ return {
             "Outline",
             "spectre_panel",
             "toggleterm",
+          },
         },
-      },
 
-      sections = {
-        lualine_a = { 'mode' },
-        lualine_b = {
-          'branch',
-          { 'filename', file_status = false, path = 1 },
-          {
-            'diagnostics',
-            source = { 'intelephense', 'quick-lint-js' },
-            sections = { 'error' },
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = {
+            'branch',
+            { 'filename', file_status = false, path = 1 },
+            {
+              'diagnostics',
+              source = { 'intelephense', 'quick-lint-js' },
+              sections = { 'error' },
+            },
+            {
+              'diagnostics',
+              source = { 'intelephense', 'quick-lint-js' },
+              sections = { 'warn' },
+            },
+            {
+              'diagnostics',
+              source = { 'intelephense', 'tsserver' },
+              sections = { 'hint' },
+            },
           },
-          {
-            'diagnostics',
-            source = { 'intelephense', 'quick-lint-js' },
-            sections = { 'warn' },
-          },
-          {
-            'diagnostics',
-            source = { 'intelephense', 'tsserver' },
-            sections = { 'hint' },
-          },
-        },
-        lualine_c = {{  git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }} ,
-        -- lualine_y = { search_result, 'filetype' },
-        lualine_y = {'encoding', 'filetype'},
-        -- lualine_z = { '%l:%c', '%p%%/%L' },
-      }
-    })
+          lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
+          -- lualine_y = { search_result, 'filetype' },
+          lualine_y = { 'encoding', 'filetype' },
+          -- lualine_z = { '%l:%c', '%p%%/%L' },
+        }
+      })
     end
   },
 
 
   {
     "terrortylor/nvim-comment",
-    config = function ()
+    config = function()
       require('nvim_comment').setup({
-      --create_mappings = false,
-      line_mapping = "<leader>cl",
-      operator_mapping = "<leader>c",
-      comment_chunk_text_object = "ic"
-    })
+        --create_mappings = false,
+        line_mapping = "<leader>cl",
+        operator_mapping = "<leader>c",
+        comment_chunk_text_object = "ic"
+      })
     end
   },
   "Djancyp/better-comments.nvim",
 
-  'ThePrimeagen/vim-be-good'
+  {
+    'tamton-aquib/duck.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+      vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+      vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
+    end
+  }
 }
