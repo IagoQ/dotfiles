@@ -15,7 +15,7 @@ return {
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
   },
-  config = function ()
+  config = function()
     -- luasnip setup
     require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -29,7 +29,7 @@ return {
 
     -- nvim-cmp setup
     local cmp = require 'cmp'
-    cmp.setup {
+    cmp.setup({
       window = {
         border = 'rounded',
         documentation = {
@@ -43,9 +43,10 @@ return {
         end,
       },
       completion = {
-        completeopt = 'menu,menuone,noinsert'
+        -- autocomplete = true,
+        keyword_length = 1,
       },
-      preselect = cmp.PreselectMode.None,
+      preselect = cmp.PreselectMode.Item,
       mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -58,8 +59,8 @@ return {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
-          -- that way you will only jump inside the snippet region
+            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+            -- that way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
@@ -80,6 +81,7 @@ return {
         end, { "i", "s" }),
       },
       sources = {
+        -- { name = "copilot" },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         -- { name = 'nvim_lsp_signature_help' },
@@ -114,6 +116,15 @@ return {
           cmp.config.compare.order,
         },
       },
-    }
+      experimental = {
+        ghost_text = false,
+      },
+    })
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
   end
 }

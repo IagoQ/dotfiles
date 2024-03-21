@@ -15,8 +15,9 @@ alias t 'tmux'
 alias ts 'tmux new-session -A -s $(basename $PWD)'
 alias tk 'tmux kill-server'
 alias ed 'echo $(basename $PWD)'
-alias gs "git status"
-alias gc "git commit -m"
+
+alias gce 'gh copilot explain'
+alias gcs 'gh copilot suggest'
 
 # fish_config theme save "TokyoNight Night"
 

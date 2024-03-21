@@ -54,6 +54,10 @@ map("n", "su", "<cmd>Telescope undo<cr>")
 map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
+
+--quickfixlist
+vim.keymap.set("n", "<leader>qn", ":cn<CR>")
+vim.keymap.set("n", "<leader>qp", ":cp<CR>")
 -- harpoon
 vim.keymap.set("n", "<leader><space>", require("harpoon.ui").toggle_quick_menu)
 vim.keymap.set("n", "<leader>;", require("harpoon.mark").add_file)

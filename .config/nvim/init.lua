@@ -19,7 +19,7 @@ require("lazy").setup("plugins")
 vim.o.number = true
 vim.o.hlsearch = false
 vim.o.laststatus = 3
-vim.o.scrolloff = 5
+vim.o.scrolloff = 8
 vim.o.relativenumber = true
 vim.o.smartcase = true
 vim.o.smarttab = true
@@ -32,11 +32,14 @@ vim.o.swapfile = false
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 vim.o.cmdheight = 1
+vim.opt.pumheight = 5
 
 require("maps")
 
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = {
+    virt_text_pos = 'right_align',
+  },
   signs = false,
   underline = true,
   update_in_insert = true,
