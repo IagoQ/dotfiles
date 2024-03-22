@@ -43,45 +43,33 @@ return {
         end,
       },
       completion = {
-        -- autocomplete = true,
-        keyword_length = 1,
+        -- autocomplete = false,
+        keyword_length = 0,
       },
-      preselect = cmp.PreselectMode.Item,
+      preselect = cmp.PreselectMode.None,
       mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ["<C-n>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          else
+            cmp.complete()
+          end
+        end, { "i", "s" }),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
           select = false,
         },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- that way you will only jump inside the snippet region
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
+        ["<Tab>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
       },
       sources = {
-        -- { name = "copilot" },
+        { name = "copilot" },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         -- { name = 'nvim_lsp_signature_help' },
@@ -117,7 +105,7 @@ return {
         },
       },
       experimental = {
-        ghost_text = false,
+        ghost_text = true,
       },
     })
     cmp.setup.cmdline({ '/', '?' }, {
