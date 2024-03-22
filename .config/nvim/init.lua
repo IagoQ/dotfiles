@@ -32,17 +32,18 @@ vim.o.swapfile = false
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 vim.o.cmdheight = 1
-vim.opt.pumheight = 5
+vim.opt.pumheight = 4
 
 require("maps")
 
 vim.diagnostic.config({
   virtual_text = {
-    virt_text_pos = 'right_align',
+    virt_text_pos = "eol",
+    spacing = 16,
   },
   signs = false,
   underline = true,
-  update_in_insert = true,
+  update_in_insert = false,
   severity_sort = false,
 })
 
