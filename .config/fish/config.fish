@@ -21,4 +21,9 @@ alias gcs 'gh copilot suggest'
 
 # fish_config theme save "TokyoNight Night"
 
+set PYENV_ROOT $HOME/.pyenv
+set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
+pyenv rehash
+
+
 status --is-interactive; and /home/iago/.rbenv/bin/rbenv init - fish | source

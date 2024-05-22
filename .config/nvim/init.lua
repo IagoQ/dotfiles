@@ -46,11 +46,3 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = false,
 })
-
-
-require("tokyonight").setup({
-  -- use the night style
-  style = "night",
-})
-vim.opt.background = "dark" -- set this to dark or light
-vim.cmd("colorscheme tokyonight")

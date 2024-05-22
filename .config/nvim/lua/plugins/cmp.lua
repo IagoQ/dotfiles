@@ -68,10 +68,11 @@ return {
         --   select = true,
         -- },
         ['<Tab>'] = cmp.mapping(function(fallback)
-          local copilot = require 'copilot.suggestion'
-          if copilot.is_visible() then
-            copilot.accept()
-          elseif cmp.visible() then
+          -- local copilot = require 'copilot.suggestion'
+          -- if copilot.is_visible() then
+          --   copilot.accept()
+          -- elseif cmp.visible() then
+          if cmp.visible() then
             local entry = cmp.get_selected_entry()
             if not entry then
               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
