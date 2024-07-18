@@ -48,21 +48,14 @@ map("n", "su", "<cmd>Telescope undo<cr>")
 map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
+-- cody
+map("v", "<leader>;a", ":CodyAsk <CR>")
+map("v", "<leader>;e", ":CodyExplain <CR>")
+map("v", "<leader>;t", ":CodyTask <CR>")
+map("n", "<leader>;e", ":CodyRestart <CR>")
+map("n", "<leader>;c", ":CodyChat <CR>")
+
 
 --quickfixlist
 vim.keymap.set("n", "<leader>qn", ":cn<CR>")
 vim.keymap.set("n", "<leader>qp", ":cp<CR>")
--- harpoon
-vim.keymap.set("n", "<leader><space>", require("harpoon.ui").toggle_quick_menu)
-vim.keymap.set("n", "<leader>;", require("harpoon.mark").add_file)
-vim.keymap.set("n", "<leader>k", require("harpoon.ui").nav_prev)
-vim.keymap.set("n", "<leader>j", require("harpoon.ui").nav_next)
-vim.keymap.set("n", "<leader>1", function() require("harpoon.ui").nav_file(1) end)
-vim.keymap.set("n", "<leader>2", function() require("harpoon.ui").nav_file(2) end)
-vim.keymap.set("n", "<leader>3", function() require("harpoon.ui").nav_file(3) end)
-vim.keymap.set("n", "<leader>4", function() require("harpoon.ui").nav_file(4) end)
-vim.keymap.set("n", "<leader>5", function() require("harpoon.ui").nav_file(5) end)
-vim.keymap.set("n", "<leader>6", function() require("harpoon.ui").nav_file(6) end)
-vim.keymap.set("n", "<leader>7", function() require("harpoon.ui").nav_file(7) end)
-vim.keymap.set("n", "<leader>8", function() require("harpoon.ui").nav_file(8) end)
-vim.keymap.set("n", "<leader>9", function() require("harpoon.ui").nav_file(9) end)

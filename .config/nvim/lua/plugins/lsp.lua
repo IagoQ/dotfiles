@@ -54,7 +54,7 @@ return {
       buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-      buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting({ async = true })<CR>", opts)
+      buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = { "*" },
@@ -66,18 +66,18 @@ return {
 
     local servers = {
       -- LSP
-      "bashls",
-      "clangd",
-      "dockerls",
+      -- "bashls",
+      -- "clangd",
+      -- "dockerls",
       "gopls",
-      "jsonls",
-      "rust_analyzer",
+      -- "jsonls",
+      -- "rust_analyzer",
       "lua_ls",
-      "yamlls",
+      -- "yamlls",
       "pyright",
-      "solargraph"
+      -- "solargraph",
+      -- "r_language_server"
     }
-
 
     require("mason").setup()
     require("mason-lspconfig").setup({
@@ -105,5 +105,14 @@ return {
 
     -- You are now capable!
     capabilities.textDocument.colorProvider = true
+
+    require("sg").setup {
+      enable_cody = true,
+      on_attach = on_attach,
+      accept_tos = true,
+      chat = {
+        -- default_model = "opeanai/gpt-4o",
+      },
+    }
   end
 }

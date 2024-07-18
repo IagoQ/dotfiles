@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 vim.o.number = true
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.laststatus = 3
 vim.o.scrolloff = 8
 vim.o.relativenumber = true
@@ -29,9 +29,10 @@ vim.o.tabstop = 2
 vim.o.expandtab = true
 vim.o.lazyredraw = true
 vim.o.swapfile = false
+vim.o.display = 'lastline'
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
-vim.o.cmdheight = 1
+vim.o.cmdheight = 0
 vim.opt.pumheight = 4
 
 require("maps")

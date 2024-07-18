@@ -96,7 +96,8 @@ return {
       },
       sources = {
         { name = 'nvim_lsp' },
-        { name = "copilot" },
+        { name = "cody" },
+        -- { name = "copilot" },
         { name = 'luasnip' },
         -- { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },

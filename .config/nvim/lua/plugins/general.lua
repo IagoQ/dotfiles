@@ -2,7 +2,24 @@ return {
   'kdheepak/lazygit.nvim',
 
   'mbbill/undotree',
-  'ThePrimeagen/harpoon',
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local harpoon = require("harpoon")
+      harpoon:setup()
+
+      vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<leader><leader>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+      vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+      vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+      vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+      vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+      vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+    end,
+  },
   {
     "lewis6991/gitsigns.nvim",
     lazy = false,
@@ -92,6 +109,13 @@ return {
       local git_blame = require('gitblame')
       vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
       vim.g.gitblame_date_format = '%r'
+
+      local function isRecording()
+        local reg = vim.fn.reg_recording()
+        if reg == "" then return "" end -- not recording
+        return "recording to " .. reg
+      end
+
       require('lualine').setup({
         disabled_filetypes = {
           statusline = {},
@@ -133,9 +157,9 @@ return {
             },
           },
           lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
-          -- lualine_y = { search_result, 'filetype' },
-          lualine_y = { 'encoding', 'filetype' },
-          -- lualine_z = { '%l:%c', '%p%%/%L' },
+          lualine_x = { isRecording, 'searchcount', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' }
         }
       })
     end
@@ -154,6 +178,4 @@ return {
     end
   },
   "Djancyp/better-comments.nvim",
-
-
 }

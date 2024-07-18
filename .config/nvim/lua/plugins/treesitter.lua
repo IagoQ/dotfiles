@@ -11,7 +11,7 @@ return {
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = true,
-        disable = { "text" , "nvim-tree"},
+        disable = { "text", "nvim-tree" },
       },
       indent = {
         enable = false
@@ -22,6 +22,8 @@ return {
         "vim",
         "c",
         "haskell",
+        "markdown",
+        "vimdoc",
         "lua",
         "json",
         "typescript",
@@ -30,6 +32,6 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
-    },
+  },
   'nvim-treesitter/nvim-treesitter-context',
 }
