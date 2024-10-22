@@ -1,0 +1,34 @@
+# General settings
+font_family      FiraCode Nerd Font    # Use a nice font with ligature support
+font_size        12.0                  # Set default font size
+
+# Appearance
+background_opacity 0.95                # Slight transparency
+cursor_shape      block                # Use block cursor
+cursor_blink      on                   # Blinking cursor for visibility
+bold_text_brightens_colors yes         # Brightens colors when bold text is used
+scrollback_lines  10000                # Large scrollback buffer
+
+# Color theme
+# include gruvbox_dark.conf              # Gruvbox dark theme (add your theme here)
+
+# Tabs and windows
+tab_bar_edge     bottom                # Place tab bar at the bottom
+# active_border_color   #8ec07c          # Highlight active window border
+
+# Behavior
+map ctrl+shift+t  new_tab              # Open new tab with Ctrl+Shift+T
+map ctrl+shift+q  close_window         # Close current window
+map ctrl+shift+left neighboring_window left  # Navigate between windows
+map ctrl+shift+right neighboring_window right # Navigate between windows
+
+# Performance
+force_ltr         yes                  # Force left-to-right text rendering
+enable_audio_bell no                   # Disable the audio bell
+
+
+
+# BEGIN_KITTY_THEME
+# Kanagawa_light
+include current-theme.conf
+# END_KITTY_THEME
