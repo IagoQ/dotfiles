@@ -1,6 +1,5 @@
 return {
   'kdheepak/lazygit.nvim',
-
   'mbbill/undotree',
   {
     "ThePrimeagen/harpoon",
@@ -8,9 +7,14 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local harpoon = require("harpoon")
-      harpoon:setup()
+      harpoon:setup({
+        settings = {
+          save_on_toggle = true,
+          sync_on_ui_close = true,
+        }
+      })
 
-      vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<leader>;", function() harpoon:list():add() end)
       vim.keymap.set("n", "<leader><leader>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
       vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
@@ -18,6 +22,10 @@ return {
       vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
       vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
       vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+      vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
+      vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
+      vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
+      vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
     end,
   },
   {
@@ -36,7 +44,6 @@ return {
       numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
     },
   },
-
   {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
@@ -109,6 +116,7 @@ return {
       local git_blame = require('gitblame')
       vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
       vim.g.gitblame_date_format = '%r'
+      vim.g.gitblame_message_template = '<date> • <author>'
 
       local function isRecording()
         local reg = vim.fn.reg_recording()
@@ -178,4 +186,9 @@ return {
     end
   },
   "Djancyp/better-comments.nvim",
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    opts = {},
+  }
 }

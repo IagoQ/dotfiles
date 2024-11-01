@@ -48,12 +48,6 @@ map("n", "su", "<cmd>Telescope undo<cr>")
 map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
--- cody
-map("v", "<leader>;a", ":CodyAsk <CR>")
-map("v", "<leader>;e", ":CodyExplain <CR>")
-map("v", "<leader>;t", ":CodyTask <CR>")
-map("n", "<leader>;e", ":CodyRestart <CR>")
-map("n", "<leader>;c", ":CodyChat <CR>")
 
 
 --quickfixlist

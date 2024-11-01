@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 vim.o.number = true
-vim.o.hlsearch = true
+vim.o.hlsearch = false
 vim.o.laststatus = 3
 vim.o.scrolloff = 8
 vim.o.relativenumber = true

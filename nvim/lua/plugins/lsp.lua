@@ -67,7 +67,7 @@ return {
     local servers = {
       -- LSP
       -- "bashls",
-      -- "clangd",
+      "clangd",
       -- "dockerls",
       "gopls",
       -- "jsonls",
@@ -75,8 +75,10 @@ return {
       "lua_ls",
       -- "yamlls",
       "pyright",
+      -- "lemminx"
       -- "solargraph",
       -- "r_language_server"
+      "pbls"
     }
 
     require("mason").setup()
@@ -89,30 +91,31 @@ return {
     local null_ls = require("null-ls")
     null_ls.setup({
       sources = {
-        null_ls.builtins.diagnostics.golangci_lint
+        -- null_ls.builtins.diagnostics.golangci_lint
       },
     })
 
 
+    local lspconfig = require('lspconfig')
+
+    local lsp_settings = {
+      pyright = {
+        python = {
+          pythonPath = vim.fn.trim(vim.fn.system("pyenv which python"))
+        }
+      }
+    }
+
     for _, name in ipairs(servers) do
-      local ok, server = require('lspconfig')[name].setup({
+      lspconfig[name].setup({
         on_attach = on_attach,
+        settings = lsp_settings[name]
       })
     end
 
-    -- document-color.nvim
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     -- You are now capable!
     capabilities.textDocument.colorProvider = true
-
-    require("sg").setup {
-      enable_cody = true,
-      on_attach = on_attach,
-      accept_tos = true,
-      chat = {
-        -- default_model = "opeanai/gpt-4o",
-      },
-    }
   end
 }
