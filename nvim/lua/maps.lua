@@ -31,25 +31,22 @@ map("v", "<A-k>", ":m '<-2<CR>gv")
 
 -- NERDTree & terminal
 map("n", "<C-f>", ":NvimTreeToggle <CR>")
-map("n", "<C-g>", ":LazyGit <CR>")
--- map("n","<C-t>",":belowright split <CR> :terminal <CR>:resize 15<CR><S-a>")
 
 -- Mapings: telescope
 map("n", "s", "<Nop>")
 map("v", "s", "<Nop>")
-map("n", "sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
-map("n", "sa", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
-map("n", "sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
-map("n", "sh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-map("n", "so", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
-map("n", "sq", "<cmd>lua require('telescope.builtin').quickfix()<CR>")
-map("n", "sj", "<cmd>lua require('telescope.builtin').jumplist()<CR>")
-map("n", "su", "<cmd>Telescope undo<cr>")
-map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
-map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
+-- map("n", "sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
+-- map("n", "sa", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
+-- map("n", "sb", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
+-- map("n", "sh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+-- map("n", "so", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
+-- map("n", "sq", "<cmd>lua require('telescope.builtin').quickfix()<CR>")
+-- map("n", "sj", "<cmd>lua require('telescope.builtin').jumplist()<CR>")
+-- map("n", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
+-- map("v", "sw", "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
 
 
 --quickfixlist
-vim.keymap.set("n", "<leader>qn", ":cn<CR>")
-vim.keymap.set("n", "<leader>qp", ":cp<CR>")
+vim.keymap.set("n", "]q", ":cn<CR>")
+vim.keymap.set("n", "[q", ":cp<CR>")

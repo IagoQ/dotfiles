@@ -2,13 +2,13 @@ return {
   'navarasu/onedark.nvim',
   {
     'folke/tokyonight.nvim',
-    -- config = function()
-    --   require("tokyonight").setup({
-    --     -- use the night style
-    --     style = "night",
-    --   })
-    --   -- vim.cmd("colorscheme tokyonight")
-    -- end
+    config = function()
+      require("tokyonight").setup({
+        -- use the night style
+        style = "night",
+      })
+      -- vim.cmd("colorscheme tokyonight")
+    end
   },
   'wuelnerdotexe/vim-enfocado',
   {
@@ -17,8 +17,8 @@ return {
     config = function()
       -- Default options:
       require('kanagawa').setup({
-        compile = false,  -- enable compiling the colorscheme
-        undercurl = true, -- enable undercurls
+        compile = false,   -- enable compiling the colorscheme
+        undercurl = false, -- enable undercurls
         commentStyle = { italic = true },
         functionStyle = {},
         keywordStyle = { italic = true },
@@ -31,11 +31,17 @@ return {
           palette = {},
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
-        theme = "lotus", -- Load "wave" theme when 'background' option is not set
-        -- background = {   -- map the value of 'background' option to a theme
-        --   dark = "wave", -- try "dragon" !
-        --   light = "lotus"
-        -- },
+        overrides = function(colors)
+          return {
+            -- Other highlight overrides
+            ["@markup.link.label.tsx"] = { fg = colors.palette.carpYellow, underline = false },
+          }
+        end,
+        theme = "wave",  -- Load "wave" theme when 'background' option is not set
+        background = {   -- map the value of 'background' option to a theme
+          dark = "wave", -- try "dragon" !
+          light = "lotus"
+        },
       })
       -- setup must be called before loading
       vim.cmd("colorscheme kanagawa")

@@ -1,5 +1,4 @@
 return {
-  'kdheepak/lazygit.nvim',
   'mbbill/undotree',
   {
     "ThePrimeagen/harpoon",
@@ -71,7 +70,7 @@ return {
       },
       git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         timeout = 400,
       },
       actions = {

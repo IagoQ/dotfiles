@@ -34,16 +34,17 @@ return {
       -- Mappings.
       local opts = { noremap = true, silent = true }
 
-      buf_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
-      buf_set_keymap("n", "gvd", "<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>", opts)
-      buf_set_keymap("n", "gD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>", opts)
-      buf_set_keymap("n", "gvD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
+      -- buf_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
+      -- buf_set_keymap("n", "gvd", "<cmd>lua require'telescope.builtin'.lsp_definitions{jump_type='vsplit'}<CR>", opts)
+      -- buf_set_keymap("n", "gD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>", opts)
+      -- buf_set_keymap("n", "gvD", "<cmd>lua require'telescope.builtin'.lsp_type_definitions{jump_type='vsplit'}<CR>", opts)
 
-      buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
-      buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", opts)
-      buf_set_keymap("n", "gs", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
+      -- buf_set_keymap("n", "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
+      -- buf_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", opts)
+      -- buf_set_keymap("n", "gs", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{symbol_width=50}<CR>", opts)
 
-      buf_set_keymap("n", "gw", ":Telescope diagnostics<CR>", opts)
+      -- buf_set_keymap("n", "gw", "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", opts)
+      -- buf_set_keymap("n", "gW", "<cmd>lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", opts)
 
       buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
       buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -52,9 +53,11 @@ return {
       buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-      buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+
+      buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = { "*" },
@@ -70,11 +73,12 @@ return {
       "clangd",
       -- "dockerls",
       "gopls",
-      -- "jsonls",
+      "jsonls",
       -- "rust_analyzer",
       "lua_ls",
-      -- "yamlls",
       "pyright",
+      "ts_ls",
+      -- "yamlls",
       -- "lemminx"
       -- "solargraph",
       -- "r_language_server"
@@ -91,7 +95,9 @@ return {
     local null_ls = require("null-ls")
     null_ls.setup({
       sources = {
-        -- null_ls.builtins.diagnostics.golangci_lint
+        null_ls.builtins.diagnostics.golangci_lint.with({
+          extra_args = { "--fast" },
+        }),
       },
     })
 
@@ -114,6 +120,7 @@ return {
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 
     -- You are now capable!
     capabilities.textDocument.colorProvider = true

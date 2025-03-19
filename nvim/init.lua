@@ -14,6 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup("plugins")
 
 vim.o.number = true
@@ -34,6 +35,10 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 vim.o.cmdheight = 0
 vim.opt.pumheight = 4
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
+})
 
 require("maps")
 

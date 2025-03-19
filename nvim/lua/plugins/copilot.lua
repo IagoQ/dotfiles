@@ -65,51 +65,64 @@ return {
   --       require("copilot_cmp").setup()
   --     end,
   --   },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "hrsh7th/nvim-cmp",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   config = function()
+  --     require("codecompanion").setup({
+  --       strategies = {
+  --         chat = {
+  --           adapter = "gemini",
+  --         },
+  --         inline = {
+  --           adapter = "gemini",
+  --         },
+  --         agent = {
+  --           adapter = "gemini",
+  --         },
+  --       },
+  --       adapters = {
+  --         anthropic = function()
+  --           return require("codecompanion.adapters").extend("anthropic", {
+  --             schema = {
+  --               model = {
+  --                 default = "claude-3-5-haiku-20241022",
+  --               },
+  --             },
+  --           })
+  --         end,
+  --         gemini = function()
+  --           return require("codecompanion.adapters").extend("gemini", {
+  --             schema = {
+  --               model = {
+  --                 default = "gemini-1.5-pro",
+  --                 -- default = "gemini-1.5-flash",
+  --               },
+  --             },
+  --           })
+  --         end,
+  --       },
+  --       display = {
+  --         chat = {
+  --           render_headers = false,
+  --         }
+  --       }
+  --     })
   --
+  --     vim.api.nvim_set_keymap("n", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+  --     vim.api.nvim_set_keymap("v", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+  --     vim.api.nvim_set_keymap("n", "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+  --     vim.api.nvim_set_keymap("v", "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
   --
+  --     -- vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
   --
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "hrsh7th/nvim-cmp",              -- Optional: For using slash commands and variables in the chat buffer
-      "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-    },
-    config = function()
-      require("codecompanion").setup({
-        strategies = {
-          chat = {
-            adapter = "anthropic",
-          },
-          inline = {
-            adapter = "anthropic",
-          },
-          agent = {
-            adapter = "anthropic",
-          },
-        },
-        adapters = {
-          gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              schema = {
-                model = {
-                  default = "gemini-1.5-pro",
-                  -- default = "gemini-1.5-flash",
-                },
-              },
-            })
-          end,
-        },
-      })
-
-      vim.api.nvim_set_keymap("n", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>ac", "<cmd>CodeCompanionChat<cr>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>ac", "<cmd>CodeCompanionChat<cr>", { noremap = true, silent = true })
-
-      -- Expand 'cc' into 'CodeCompanion' in the command line
-      vim.cmd([[cab cc CodeCompanion]])
-    end
-  }
+  --     -- Expand 'cc' into 'CodeCompanion' in the command line
+  --     vim.cmd([[cab cc CodeCompanion]])
+  --   end
+  -- }
 }
