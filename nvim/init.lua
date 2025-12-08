@@ -40,6 +40,17 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
   command = "if mode() != 'c' | checktime | endif",
 })
 
+-- Diff options for better single-buffer diff experience
+vim.opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "hiddenoff",
+  "algorithm:histogram",
+  "indent-heuristic",
+  "linematch:60"
+}
+
 require("maps")
 
 vim.diagnostic.config({

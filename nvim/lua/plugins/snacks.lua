@@ -61,10 +61,8 @@ return {
       { "gr",        function() Snacks.picker.lsp_references() end,                                         nowait = true,                     desc = "References" },
       { "gi",        function() Snacks.picker.lsp_implementations() end,                                    desc = "Goto Implementation" },
       { "gs",        function() Snacks.picker.lsp_symbols() end,                                            desc = "LSP Symbols" },
+      { "gS",        function() Snacks.picker.lsp_workspace_symbols() end,                                  desc = "LSP Workspace Symbols" },
       { "gw",        function() Snacks.picker.diagnostics() end,                                            desc = "Diagnostics" },
-      -- scratch buffers
-      { "<leader>.", function() Snacks.scratch() end,                                                       desc = "Toggle Scratch Buffer" },
-      { "<leader>S", function() Snacks.scratch.select() end,                                                desc = "Select Scratch Buffer" },
     },
   },
 }

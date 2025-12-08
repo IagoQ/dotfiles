@@ -1,35 +1,34 @@
 return {
-  'mbbill/undotree',
+  { 'mbbill/undotree', cmd = "UndotreeToggle" },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>;", function() require("harpoon"):list():add() end, desc = "Harpoon add" },
+      { "<leader><leader>", function() local h = require("harpoon"); h.ui:toggle_quick_menu(h:list()) end, desc = "Harpoon menu" },
+      { "<leader>1", function() require("harpoon"):list():select(1) end, desc = "Harpoon 1" },
+      { "<leader>2", function() require("harpoon"):list():select(2) end, desc = "Harpoon 2" },
+      { "<leader>3", function() require("harpoon"):list():select(3) end, desc = "Harpoon 3" },
+      { "<leader>4", function() require("harpoon"):list():select(4) end, desc = "Harpoon 4" },
+      { "<leader>5", function() require("harpoon"):list():select(5) end, desc = "Harpoon 5" },
+      { "<leader>6", function() require("harpoon"):list():select(6) end, desc = "Harpoon 6" },
+      { "<leader>7", function() require("harpoon"):list():select(7) end, desc = "Harpoon 7" },
+      { "<leader>8", function() require("harpoon"):list():select(8) end, desc = "Harpoon 8" },
+      { "<leader>9", function() require("harpoon"):list():select(9) end, desc = "Harpoon 9" },
+    },
     config = function()
-      local harpoon = require("harpoon")
-      harpoon:setup({
+      require("harpoon"):setup({
         settings = {
           save_on_toggle = true,
           sync_on_ui_close = true,
         }
       })
-
-      vim.keymap.set("n", "<leader>;", function() harpoon:list():add() end)
-      vim.keymap.set("n", "<leader><leader>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-      vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-      vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-      vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-      vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
-      vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
-      vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
-      vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
-      vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
-      vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
     end,
   },
   {
     "lewis6991/gitsigns.nvim",
-    lazy = false,
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       signs = {
         add = { text = "▎" },
@@ -44,9 +43,31 @@ return {
     },
   },
   {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    keys = {
+      { '<leader>gd', function()
+        if next(require('diffview.lib').views) == nil then
+          vim.cmd('DiffviewOpen')
+        else
+          vim.cmd('DiffviewClose')
+        end
+      end, desc = 'Toggle git diff view' },
+      { '<leader>gh', ':DiffviewFileHistory %<CR>', desc = 'File history' },
+    },
+    config = function()
+      require('diffview').setup()
+    end
+  },
+  {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
       'kyazdani42/nvim-web-devicons'
+    },
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus" },
+    keys = {
+      { "<C-f>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
     },
     opts = {
       view = {
@@ -187,7 +208,35 @@ return {
   "Djancyp/better-comments.nvim",
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ft = "markdown",
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     opts = {},
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+      local npairs = require('nvim-autopairs')
+      npairs.setup({
+        disable_filetype = { "TelescopePrompt", "spectre_panel", "vim" },
+        check_ts = true,
+        ts_config = {
+          lua = { "string", "source" },
+          javascript = { "string", "template_string" },
+          typescript = { "string", "template_string" },
+          java = false,
+        },
+        fast_wrap = {
+          map = '<M-e>',
+          chars = { '{', '[', '(', '"', "'" },
+          pattern = [=[[%'%"%>%]%)%}%,]]=],
+          end_key = '$',
+          keys = 'qwertyuiopzxcvbnmasdfghjkl',
+          check_comma = true,
+          highlight = 'PmenuSel',
+          highlight_grey = 'LineNr'
+        },
+      })
+    end,
   }
 }

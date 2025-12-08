@@ -1,20 +1,17 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    lazy = false,
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
       require("nvim-treesitter.configs").setup({
-        -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-        -- Install languages synchronously (only applied to `ensure_installed`)
-        sync_install = true,
-
+        sync_install = false,
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = true,
+          additional_vim_regex_highlighting = false,
           disable = { "text", "nvim-tree" },
         },
         indent = {
@@ -25,14 +22,12 @@ return {
           "yaml",
           "vim",
           "c",
-          "haskell",
           "markdown",
           "vimdoc",
           "lua",
           "json",
           "typescript",
           "tsx",
-          "erlang",
         },
         -- textobjects = {
         --   select = {

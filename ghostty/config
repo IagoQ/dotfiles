@@ -1,56 +1,111 @@
-# This is the configuration file for Ghostty.                                                                                                          abcdefg
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /home/iagoq/.config/ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
+# Ghostty Configuration
+# https://ghostty.org/docs/config
 
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = Iosevka
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms
-#
-
-
+# =============================================================================
+# Font
+# =============================================================================
 font-family = RobotoMono Nerd Font
+font-size = 14
 window-inherit-font-size = false
-font-size = 13
 adjust-cell-height = 2%
 adjust-cell-width = 0%
 
+# =============================================================================
+# Shell Integration
+# =============================================================================
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# =============================================================================
+# Appearance
+# =============================================================================
+theme = Kanagawa Wave
+background-opacity = 0.95
+background-blur-radius = 20
+mouse-hide-while-typing = true
+unfocused-split-opacity = 0.85
+
+# =============================================================================
+# Window
+# =============================================================================
 window-decoration = none
 gtk-titlebar = false
+window-padding-x = 4
+window-padding-y = 4
+window-inherit-working-directory = true
+confirm-close-surface = false
 
-theme = Kanagawa Wave
+# =============================================================================
+# Cursor
+# =============================================================================
+cursor-style = block
+cursor-style-blink = true
+cursor-click-to-move = true
+
+# =============================================================================
+# Clipboard & Selection
+# =============================================================================
+copy-on-select = clipboard
+clipboard-paste-protection = true
+selection-invert-fg-bg = true
+
+# =============================================================================
+# Scrollback
+# =============================================================================
+scrollback-limit = 10000000
+
+# =============================================================================
+# Quick Terminal (Quake-style)
+# =============================================================================
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.1
+
+# =============================================================================
+# Shaders
+# =============================================================================
+# custom-shader = ./shaders/glow-rgbsplit-twitchy.glsl
+# custom-shader = ./shaders/1984.glsl
+# custom-shader = ./shaders/glitchy.glsl
+# custom-shader = ./shaders/bettercrt.glsl
+# custom-shader = ./shaders/water.glsl
+custom-shader = ./shaders/cursor_smear_fade.glsl
+
+# =============================================================================
+# Keybinds
+# =============================================================================
+
+# Original
+keybind = shift+enter=text:\n
+
+# Splits (vim-style navigation)
+keybind = ctrl+shift+enter=new_split:right
+keybind = ctrl+shift+d=new_split:down
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+z=toggle_split_zoom
+
+# Tabs
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+w=close_surface
+keybind = ctrl+tab=next_tab
+keybind = ctrl+shift+tab=previous_tab
+
+# Font size
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+0=reset_font_size
+
+# Quick terminal (global - works from anywhere)
+keybind = global:ctrl+grave=toggle_quick_terminal
+
+# Prompt navigation (requires shell-integration)
+keybind = ctrl+shift+up=jump_to_prompt:-1
+keybind = ctrl+shift+down=jump_to_prompt:1
+
+# Utilities
+keybind = ctrl+shift+i=inspector:toggle
+keybind = ctrl+shift+p=toggle_command_palette
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard

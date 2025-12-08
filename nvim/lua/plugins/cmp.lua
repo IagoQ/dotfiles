@@ -2,6 +2,7 @@ return {
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    event = "InsertEnter",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -31,6 +32,16 @@ return {
 
       -- nvim-cmp setup
       local cmp = require 'cmp'
+
+      -- Integration with nvim-autopairs
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+      cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done({
+          map_char = { tex = '' }
+        })
+      )
+
       cmp.setup({
         window = {
           border = 'rounded',
@@ -45,8 +56,7 @@ return {
           end,
         },
         completion = {
-          -- autocomplete = false,
-          keyword_length = 0,
+          keyword_length = 2,
         },
         preselect = cmp.PreselectMode.None,
         mapping = {
