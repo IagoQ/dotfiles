@@ -1,0 +1,17 @@
+{
+  "name": "iq-tlk",
+  "owner": {
+    "name": "iagoq"
+  },
+  "plugins": [
+    {
+      "name": "iq-tlk",
+      "source": "..",
+      "description": "Personal Claude Code config, workflows, agents, and utilities",
+      "version": "1.0.0",
+      "author": {
+        "name": "iagoq"
+      }
+    }
+  ]
+}

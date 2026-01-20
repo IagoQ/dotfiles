@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "includeCoAuthoredBy": false,
+  "hooks": {},
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/iagoq/.claude/statusline-fish.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "agent-sdk-dev@claude-code-plugins": false,
+    "code-review@claude-code-plugins": false,
+    "commit-commands@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
+    "frontend-design@claude-code-plugins": false,
+    "pr-review-toolkit@claude-code-plugins": false,
+    "plugin-dev@claude-plugins-official": false,
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  },
+    "alwaysThinkingEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754305042728
+  }
+}
